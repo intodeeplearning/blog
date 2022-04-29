@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://intodeeplearning.github.io/blog/example-markdown/</loc>
+<loc>http://intodeeplearning.com/example-markdown/</loc>
 <lastmod>2020-01-14T00:00:00-06:00</lastmod>
 </url>
 <url>
-<loc>https://intodeeplearning.github.io/blog/jupyter/2020/02/20/test.html</loc>
+<loc>http://intodeeplearning.com/jupyter/2020/02/20/test.html</loc>
 <lastmod>2020-02-20T00:00:00-06:00</lastmod>
 </url>
 <url>
-<loc>https://intodeeplearning.github.io/blog/how-to-write-an-abstract/</loc>
+<loc>http://intodeeplearning.com/how-to-write-an-abstract/</loc>
 <lastmod>2022-04-25T00:00:00-05:00</lastmod>
 </url>
 <url>
-<loc>https://intodeeplearning.github.io/blog/categories/</loc>
+<loc>http://intodeeplearning.com/categories/</loc>
 </url>
 <url>
-<loc>https://intodeeplearning.github.io/blog/search/</loc>
+<loc>http://intodeeplearning.com/search/</loc>
 </url>
 <url>
-<loc>https://intodeeplearning.github.io/blog/about/</loc>
+<loc>http://intodeeplearning.com/about/</loc>
 </url>
 <url>
-<loc>https://intodeeplearning.github.io/blog/</loc>
+<loc>http://intodeeplearning.com/</loc>
 </url>
 </urlset>
