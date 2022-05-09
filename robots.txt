@@ -1,1 +1,1 @@
-Sitemap: http://intodeeplearning.github.io/blog/sitemap.xml
+Sitemap: https://intodeeplearning.com/sitemap.xml
