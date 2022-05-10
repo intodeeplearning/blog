@@ -68,3 +68,8 @@ I put some shadow for the image and also shrink it to 90%.
 The image will be like:
 
 {% include image_box_shadow.html file_id="1bXzYeegauqB2M6-VZwitEeXHmMiYZIUY" alt="sample image" %}
+
+
+## Reference
+- [css box-shadow](https://www.w3schools.com/css/css3_shadows_box.asp)
+- [css center images](https://www.w3schools.com/howto/howto_css_image_center.asp)
