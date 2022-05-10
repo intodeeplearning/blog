@@ -4,22 +4,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>IntoDeepLearning | A learning progress in deep learning and research.</title>
+<title>How to delete files and folders with python | IntoDeepLearning</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="IntoDeepLearning" />
+<meta property="og:title" content="How to delete files and folders with python" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A learning progress in deep learning and research." />
-<meta property="og:description" content="A learning progress in deep learning and research." />
-<link rel="canonical" href="https://intodeeplearning.com/" />
-<meta property="og:url" content="https://intodeeplearning.com/" />
+<meta name="description" content="steps delete files and folder using python" />
+<meta property="og:description" content="steps delete files and folder using python" />
+<link rel="canonical" href="https://intodeeplearning.com/how-to-delete-files-and-folders-with-python/" />
+<meta property="og:url" content="https://intodeeplearning.com/how-to-delete-files-and-folders-with-python/" />
 <meta property="og:site_name" content="IntoDeepLearning" />
-<meta property="og:image" content="https://intodeeplearning.com/images/logo.png" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="https://intodeeplearning.com/images/logo.png" />
-<meta property="twitter:title" content="IntoDeepLearning" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-05-10T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How to delete files and folders with python" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"A learning progress in deep learning and research.","headline":"IntoDeepLearning","image":"https://intodeeplearning.com/images/logo.png","name":"IntoDeepLearning","url":"https://intodeeplearning.com/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-10T00:00:00-05:00","datePublished":"2022-05-10T00:00:00-05:00","description":"steps delete files and folder using python","headline":"How to delete files and folders with python","mainEntityOfPage":{"@type":"WebPage","@id":"https://intodeeplearning.com/how-to-delete-files-and-folders-with-python/"},"url":"https://intodeeplearning.com/how-to-delete-files-and-folders-with-python/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://intodeeplearning.com/feed.xml" title="IntoDeepLearning" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -102,49 +101,63 @@ window.onload = wrap_img;
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home"><h1 id="recent-posts">Recent Posts</h1>
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">How to delete files and folders with python</h1><p class="page-description">steps delete files and folder using python</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-05-10T00:00:00-05:00" itemprop="datePublished">
+        May 10, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
 
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/categories/#Python Hacks">Python Hacks</a>
+        
+      
+      </p>
+    
 
-  
+    </header>
 
-  <!-- Hide posts if front matter flag hide:true -->
-  
-  
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#delete-files">Delete files</a></li>
+<li class="toc-entry toc-h2"><a href="#delete-empty-folders">Delete empty folders</a></li>
+<li class="toc-entry toc-h2"><a href="#delete-folders-with-files">Delete folders with files</a></li>
+</ul><h2 id="delete-files">
+<a class="anchor" href="#delete-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Delete files</h2>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">'/file_name'</span>
+<span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">os</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div></div>
+<h2 id="delete-empty-folders">
+<a class="anchor" href="#delete-empty-folders" aria-hidden="true"><span class="octicon octicon-link"></span></a>Delete empty folders</h2>
 
-  <!-- Sort posts by rank, then date -->
-  
-  
-  
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">'/folder_name'</span>
+<span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">exists</span><span class="p">(</span><span class="n">pathe</span><span class="p">):</span>
+    <span class="n">os</span><span class="p">.</span><span class="n">remdir</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div></div>
 
- 
-  
+<h2 id="delete-folders-with-files">
+<a class="anchor" href="#delete-folders-with-files" aria-hidden="true"><span class="octicon octicon-link"></span></a>Delete folders with files</h2>
 
-   <!-- Assemble final sorted posts array -->
-  
-  <ul class="post-list"><li><h3>
-    <a class="post-link" href="/how-to-delete-files-and-folders-with-python/">
-    How to delete files and folders with python
-    </a>
-</h3><p class="post-meta-description">steps delete files and folder using python</p><p class="post-meta">May 10, 2022</p>
-</li><li><h3>
-    <a class="post-link" href="/how-to-download-files-in-gdrive-using-python/">
-    How to download files in google drive using python
-    </a>
-</h3><p class="post-meta">May 8, 2022</p>
-</li><li><h3>
-    <a class="post-link" href="/how-to-write-an-abstract/">
-    How to Write an Abstract
-    </a>
-</h3><p class="post-meta-description">steps and considerations for abstract writing</p><p class="post-meta">Apr 25, 2022</p>
-</li><li><h3>
-    <a class="post-link" href="/jupyter/2020/02/20/test.html">
-    Fastpages Notebook Blog Post
-    </a>
-</h3><p class="post-meta-description">A tutorial of fastpages for Jupyter notebooks.</p><p class="post-meta">Feb 20, 2020</p>
-</li></ul>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s">'/folder_name'</span>
+<span class="k">if</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="n">shutil</span><span class="p">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div></div>
 
-    </div>
+  </div><a class="u-url" href="/how-to-delete-files-and-folders-with-python/" hidden></a>
+</article>
+
       </div>
     </main><footer class="site-footer h-card">
   <data class="u-url" href="/"></data>
