@@ -1,7 +1,7 @@
 ---
 toc: true
 layout: post
-description: steps delete files and folder using python
+description: steps to delete files and folder using python
 categories: [Python Hacks]
 permalink: /how-to-delete-files-and-folders-with-python/
 search_exclude: false
