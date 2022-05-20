@@ -1,7 +1,14 @@
-# How to setup google domain for your fastpages site (or GitHub Pages)
-
-Tags: setup
-
+---
+toc: true
+layout: post
+description: a tutorial about setting up google domain for GitHub Pages
+categories: [Markdown]
+permalink: /setup-google-domain-for-github-pages/
+search_exclude: false
+title: How to setup google domain for your fastpages site (or GitHub Pages)
+show_tags: true
+hide: 
+---
 ## Introduction
 
 When you publish a site with [GitHub Pages](https://pages.github.com), the default address will look something like this: `https://<username>.github.io/<repo name>`. For example, [https://intodeeplearning.github.io/blog](https://intodeeplearning.github.io/blog).
@@ -27,7 +34,7 @@ If you’d like to replace the default address with your custom domain, such as 
 
 ![Screen Shot 2022-05-19 at 10.52.55 AM.png](How%20to%20setup%20google%20domain%20for%20your%20fastpages%20site%202b91c1051f4d44c0b3cce1dbefb3e027/Screen_Shot_2022-05-19_at_10.52.55_AM.png)
 
-### Step 2. (Optional) You can skip this step if you are NOT using a site generator, such as fastpages, Jekyll.
+### Step 2. (Optional) You can skip this step if you are NOT using a site generator, such as fastpages, or [Jekyll](https://jekyllrb.com).
 
 If you are using [fastpages](https://fastpages.fast.ai).
 
@@ -119,7 +126,7 @@ That’s it! Your website should be publishing at your custom domain now!
 **Note:** DNS changes can take up to 24 hours to propagate.
 
 - You may use [dns propagation checker](https://www.whatsmydns.net/#A/intodeeplearning.com) to check if you DNS has successfully propagated.
-- More questions→ See [Trouble shoot](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)
+- More questions→ See [GitHub Pages trouble shoot](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)
 
 ### Reference
 
