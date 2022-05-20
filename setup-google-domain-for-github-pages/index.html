@@ -117,7 +117,7 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/categories/#Markdown">Markdown</a>
+        <a class="category-tags-link" href="/categories/#Github Pages">Github Pages</a>
         
       
       </p>
@@ -135,9 +135,9 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#step-2-optional-you-can-skip-this-step-if-you-are-not-using-a-site-generator-such-as-fastpages-or-jekyll">Step 2. (Optional) You can skip this step if you are NOT using a site generator, such as fastpages, or Jekyll.</a></li>
 <li class="toc-entry toc-h3"><a href="#step-3-let-your-custom-domain-point-to-your-github-pages">Step 3. Let your custom domain point to your GitHub Pages</a></li>
 <li class="toc-entry toc-h3"><a href="#step-4-enable-https-for-you-github-pages">Step 4. Enable HTTPS for you GitHub Pages</a></li>
-<li class="toc-entry toc-h3"><a href="#reference">Reference</a></li>
 </ul>
 </li>
+<li class="toc-entry toc-h2"><a href="#reference">Reference</a></li>
 </ul><h2 id="introduction">
 <a class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
 
@@ -229,15 +229,11 @@ window.onload = wrap_img;
 
     <p><img src="https://drive.google.com/uc?id=1oJGTCf1twGn1fOXoIGbCLaTx2yf5E2en" alt="example image" style="display: block; margin-right: auto; margin-left: auto; width: 90%;    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"></p>
 
-    <p><img src="How%20to%20setup%20google%20domain%20for%20your%20fastpages%20site%202b91c1051f4d44c0b3cce1dbefb3e027/Screen_Shot_2022-05-19_at_10.53.45_AM.png" alt="Screen Shot 2022-05-19 at 10.53.45 AM.png"></p>
-
     <ul>
       <li>
         <p>Do NOT include the repository name, such as <a href="http://intodeeplearning.github.io/blog">intodeeplearning.github.io/blog</a>. If you include your repository name in the CNAME record to your DNS provider, you’ll get the below message at your GitHub Settings &gt; Pages &gt; Custom domain</p>
 
         <p><img src="https://drive.google.com/uc?id=1eqxz86jP8dGRqyPIhNZNh7K915yAw6EY" alt="example image" style="display: block; margin-right: auto; margin-left: auto; width: 90%;    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"></p>
-
-        <p><img src="How%20to%20setup%20google%20domain%20for%20your%20fastpages%20site%202b91c1051f4d44c0b3cce1dbefb3e027/Screen_Shot_2022-05-09_at_10.34.36_PM.png" alt="Screen Shot 2022-05-09 at 10.34.36 PM.png"></p>
       </li>
     </ul>
   </li>
@@ -258,7 +254,7 @@ window.onload = wrap_img;
 </code></pre></div>        </div>
       </li>
       <li>
-        <p>check here if there’s an update in the IP addresses.</p>
+        <p>check <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">here</a> if there’s an update in the IP addresses.</p>
       </li>
     </ul>
   </li>
@@ -292,23 +288,21 @@ window.onload = wrap_img;
     <p>Now you should be able to check the “Enforce HTTPS” checkbox</p>
 
     <p><img src="https://drive.google.com/uc?id=1z5WlJs0MsnlACouqH5H-dlfnA2jd5sYJ" alt="example image" style="display: block; margin-right: auto; margin-left: auto; width: 90%;    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"></p>
-
-    <p><img src="How%20to%20setup%20google%20domain%20for%20your%20fastpages%20site%202b91c1051f4d44c0b3cce1dbefb3e027/Screen_Shot_2022-05-19_at_11.21.56_AM.png" alt="Screen Shot 2022-05-19 at 11.21.56 AM.png"></p>
   </li>
 </ul>
 
 <p>That’s it! Your website should be publishing at your custom domain now!</p>
 
-<p><strong>Note:</strong> DNS changes can take up to 24 hours to propagate.</p>
+<div class="Toast">
+   <span class="Toast-icon"><svg class="octicon octicon-info" viewbox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content">DNS changes can take **up to 24 hours** to propagate. 
+- You may use [dns propagation checker](https://www.whatsmydns.net/#A/intodeeplearning.com) to check if you DNS has successfully propagated.
+- More questions -&gt; See [GitHub Pages trouble shoot](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)
+</span>
+</div>
 
-<ul>
-  <li>You may use <a href="https://www.whatsmydns.net/#A/intodeeplearning.com">dns propagation checker</a> to check if you DNS has successfully propagated.</li>
-  <li>More questions→ See <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages">GitHub Pages trouble shoot</a>
-</li>
-</ul>
-
-<h3 id="reference">
-<a class="anchor" href="#reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference</h3>
+<h2 id="reference">
+<a class="anchor" href="#reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference</h2>
 
 <ul>
   <li>Official Github Tutorial
@@ -327,8 +321,7 @@ window.onload = wrap_img;
         </blockquote>
 
         <blockquote>
-          <p><code class="language-plaintext highlighter-rouge">www</code>subdomains are the most stable type of custom domain because <code class="language-plaintext highlighter-rouge">www</code>
-   subdomains are not affected by changes to the IP addresses of GitHub Enterprise Cloud’s servers.</p>
+          <p><code class="language-plaintext highlighter-rouge">www</code>subdomains are the most stable type of custom domain because <code class="language-plaintext highlighter-rouge">www</code> subdomains are not affected by changes to the IP addresses of GitHub Enterprise Cloud’s servers.</p>
 
         </blockquote>
       </li>
@@ -343,7 +336,6 @@ window.onload = wrap_img;
 </li>
     </ul>
   </li>
-  <li><a href="https://github.com/fastai/fastpages/blob/master/_fastpages_docs/_setup_pr_template.md#optional-using-a-custom-domain">Fastpages: using a custom domain</a></li>
 </ul>
 
   </div><a class="u-url" href="/setup-google-domain-for-github-pages/" hidden></a>
