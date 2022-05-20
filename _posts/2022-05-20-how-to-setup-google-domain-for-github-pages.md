@@ -9,60 +9,60 @@ title: How to setup google domain for your fastpages site (or GitHub Pages)
 show_tags: true
 hide: 
 ---
-## Introduction
+# Introduction
 
 When you publish a site with [GitHub Pages](https://pages.github.com), the default address will look something like this: `https://<username>.github.io/<repo name>`. For example, [https://intodeeplearning.github.io/blog](https://intodeeplearning.github.io/blog).
 
-If you’d like to replace the default address with your custom domain, such as [https://intodeeplearning.com](https://intodeeplearning.com) , follow this tutorial!
+If you'd like to replace the default address with your custom domain, such as [https://intodeeplearning.com](https://intodeeplearning.com) , follow this tutorial!
 
-### What you’ll get in this tutorial:
+## What you will get in this tutorial:
 
-- Setting up a custom `www` subdomain, such as `[www.example.com](http://www.example.com)`, for your GitHub Pages
+- Setting up a custom `www` subdomain, such as `www.example.com`, for your GitHub Pages
 - having the apex domain, such as  `example.com` , automatically redirect to `www.example.com`.
 
-### What you’ll need
+## What you need
 
 - A GitHub repository ready for publishing, such as [https://github.com/intodeeplearning/blog](https://github.com/intodeeplearning/blog)
 - A purchased [google domain](https://domains.google), such as `intodeeplearning.com`
 
-## Step 1. Setup in your Github Repo
+# Step 1. Setup in your Github Repo
 
 - Go to Settings > Pages > Custom domain, and add you custom domain name.
     
-    {% include image_box_shadow.html file_id="[10wHsLyGzueGM2HnZ-5nBYe61afuEq9GX](https://drive.google.com/file/d/10wHsLyGzueGM2HnZ-5nBYe61afuEq9GX/view?usp=sharing)" alt="example image" %}
+    {% include image_box_shadow.html file_id="10wHsLyGzueGM2HnZ-5nBYe61afuEq9GX" alt="example image" %}
     
 
-## Step 2. (Optional) You can skip this step if you are NOT using a site generator, such as fastpages, or [Jekyll](https://jekyllrb.com).
+# Step 2. (Optional) You can skip this step if you are NOT using a site generator, such as fastpages, or [Jekyll](https://jekyllrb.com).
 
 If you are using [fastpages](https://fastpages.fast.ai).
 
-- [add a cname file](https://github.com/fastai/fastpages/blob/master/CNAME) in the root of your repo.
+- Add a [CNAME file](https://github.com/fastai/fastpages/blob/master/CNAME) in the root of your repo.
     
     ```markdown
     www.intodeeplearning.com
     ```
     
-- In `[/_config.yml`,](https://github.com/fastai/fastpages/blob/master/_config.yml) set `url` to your custom `www` subdomain and and`baseurl` to `""` .
+- In [_config.yml](https://github.com/fastai/fastpages/blob/master/_config.yml) set `url` to your custom `www` subdomain and`baseurl` to `""` .
     
     ```bash
     url: 'https://www.intodeeplearning.com'
     baseurl: ''
     ```
     
-- In **[`_action_files](https://github.com/fastai/fastpages/tree/master/_action_files)/settings.ini` ,** empty `baseurl.`
+- In [_action_files/settings.ini](https://github.com/fastai/fastpages/tree/master/_action_files), empty `baseurl`.
     
     ```bash
     baseurl=
     ```
     
-- you can also refer to [Fastpages: using a custom domain](https://github.com/fastai/fastpages/blob/master/_fastpages_docs/_setup_pr_template.md#optional-using-a-custom-domain)
+- You can also refer to [Fastpages: using a custom domain](https://github.com/fastai/fastpages/blob/master/_fastpages_docs/_setup_pr_template.md#optional-using-a-custom-domain)
 
-## Step 3. Let your custom domain point to your GitHub Pages
+# Step 3. Let your custom domain point to your GitHub Pages
 
 - Go to your [google domain registrar](https://domains.google.com/registrar/) and select your domain.
 - Go to the **DNS** tab
     
-    {% include image_box_shadow.html file_id="[10wHsLyGzueGM2HnZ-5nBYe61afuEq9GX](https://drive.google.com/file/d/10wHsLyGzueGM2HnZ-5nBYe61afuEq9GX/view?usp=sharing)" alt="example image" %}
+    {% include image_box_shadow.html file_id="10wHsLyGzueGM2HnZ-5nBYe61afuEq9GX" alt="example image" %}
     
 - Under the Resource records section, click **Manage custom records**
     
@@ -90,7 +90,7 @@ If you are using [fastpages](https://fastpages.fast.ai).
         ```
         
     - Check [here](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain) if there's an update in the IP addresses.
-- Open Terminal to confirm that your DNS record configured correctly
+- Open **Terminal** to confirm that your DNS record configured correctly
     - For `CNAME` records, do
         
         ```markdown
@@ -104,7 +104,7 @@ If you are using [fastpages](https://fastpages.fast.ai).
         ```
         
 
-## Step 4. Enable HTTPS for you GitHub Pages
+# Step 4. Enable HTTPS for you GitHub Pages
 
 - Go to your github repository settings page, under Settings > Pages, remove your custom domain and save.
 - Then add it back and save again.
@@ -120,7 +120,7 @@ If you are using [fastpages](https://fastpages.fast.ai).
 
 That's it! Your website should be publishing at your custom domain now!
 
-## Reference
+# Reference
 
 - Official Github Tutorial
     - [About custom domains and GitHub Pages](https://docs.github.com/en/enterprise-cloud@latest/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
