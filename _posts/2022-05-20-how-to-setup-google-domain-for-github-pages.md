@@ -2,7 +2,7 @@
 toc: true
 layout: post
 description: a tutorial about setting up google domain for GitHub Pages
-categories: [Markdown]
+categories: [Github Pages]
 permalink: /setup-google-domain-for-github-pages/
 search_exclude: false
 title: How to setup google domain for your fastpages site (or GitHub Pages)
@@ -74,13 +74,9 @@ If you are using [fastpages](https://fastpages.fast.ai).
     
     {% include image_box_shadow.html file_id="1oJGTCf1twGn1fOXoIGbCLaTx2yf5E2en" alt="example image" %}
     
-    ![Screen Shot 2022-05-19 at 10.53.45 AM.png](How%20to%20setup%20google%20domain%20for%20your%20fastpages%20site%202b91c1051f4d44c0b3cce1dbefb3e027/Screen_Shot_2022-05-19_at_10.53.45_AM.png)
-    
     - Do NOT include the repository name, such as [intodeeplearning.github.io/blog](http://intodeeplearning.github.io/blog). If you include your repository name in the CNAME record to your DNS provider, you’ll get the below message at your GitHub Settings > Pages > Custom domain
         
         {% include image_box_shadow.html file_id="1eqxz86jP8dGRqyPIhNZNh7K915yAw6EY" alt="example image" %}
-        
-        ![Screen Shot 2022-05-09 at 10.34.36 PM.png](How%20to%20setup%20google%20domain%20for%20your%20fastpages%20site%202b91c1051f4d44c0b3cce1dbefb3e027/Screen_Shot_2022-05-09_at_10.34.36_PM.png)
         
 - create an `A` record that points to the IP addresses for Github Pages.
     
@@ -95,7 +91,7 @@ If you are using [fastpages](https://fastpages.fast.ai).
         185.199.111.153
         ```
         
-    - check here if there’s an update in the IP addresses.
+    - check [here](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain) if there's an update in the IP addresses.
 - Open Terminal to confirm that your DNS record configured correctly
     - For `CNAME` records, do
         
@@ -118,17 +114,17 @@ If you are using [fastpages](https://fastpages.fast.ai).
     
     {% include image_box_shadow.html file_id="1z5WlJs0MsnlACouqH5H-dlfnA2jd5sYJ" alt="example image" %}
     
-    ![Screen Shot 2022-05-19 at 11.21.56 AM.png](How%20to%20setup%20google%20domain%20for%20your%20fastpages%20site%202b91c1051f4d44c0b3cce1dbefb3e027/Screen_Shot_2022-05-19_at_11.21.56_AM.png)
-    
 
-That’s it! Your website should be publishing at your custom domain now!
 
-**Note:** DNS changes can take up to 24 hours to propagate.
+That's it! Your website should be publishing at your custom domain now!
 
+{% include info.html text="DNS changes can take **up to 24 hours** to propagate. 
 - You may use [dns propagation checker](https://www.whatsmydns.net/#A/intodeeplearning.com) to check if you DNS has successfully propagated.
-- More questions→ See [GitHub Pages trouble shoot](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)
+- More questions -> See [GitHub Pages trouble shoot](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)
+" %}
 
-### Reference
+
+## Reference
 
 - Official Github Tutorial
     - [About custom domains and GitHub Pages](https://docs.github.com/en/enterprise-cloud@latest/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages)
@@ -139,12 +135,10 @@ That’s it! Your website should be publishing at your custom domain now!
         > If you configure `[www.example.com](http://www.example.com)` as the custom domain for your site, and you have GitHub Pages DNS records set up for the apex and `www` domains, then `example.com` will redirect to `www.example.com`
         > 
         
-        > `www`subdomains are the most stable type of custom domain because `www`
-         subdomains are not affected by changes to the IP addresses of GitHub Enterprise Cloud's servers.
+        > `www`subdomains are the most stable type of custom domain because `www` subdomains are not affected by changes to the IP addresses of GitHub Enterprise Cloud's servers.
         > 
     - [Managing a custom domain for your GitHub Pages site](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-records-with-your-dns-provider)
     - [Configuring a subdomain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
 - ref: [How to setup google domain for github pages](https://dev.to/trentyang/how-to-setup-google-domain-for-github-pages-1p58)
     - However, the `www` subdomains won’t redirect to the apex domain successfully following its method.
     - Fix: configure your custom domain as `[www.example.com](http://www.example.com)` (`www` subdomain) , instead of `example.com` ( apex domain). Then `example.com` will redirect to  `www.example.com`
-- [Fastpages: using a custom domain](https://github.com/fastai/fastpages/blob/master/_fastpages_docs/_setup_pr_template.md#optional-using-a-custom-domain)
