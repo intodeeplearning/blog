@@ -105,12 +105,33 @@ If you are using [fastpages](https://fastpages.fast.ai).
         ```markdown
         dig www.intodeeplearning.com +nostats +nocomments +nocmd
         ```
+        - You should get
+
+            ```bash
+            ; <<>> DiG 9.10.6 <<>> www.intodeeplearning.com +nostats +nocomments +nocmd
+            ;; global options: +cmd
+            ;www.intodeeplearning.com.	IN	A
+            www.intodeeplearning.com. 3312	IN	CNAME	intodeeplearning.github.io.
+            intodeeplearning.github.io. 3312 IN	A	185.199.110.153
+            intodeeplearning.github.io. 3312 IN	A	185.199.111.153
+            intodeeplearning.github.io. 3312 IN	A	185.199.109.153
+            intodeeplearning.github.io. 3312 IN	A	185.199.108.153
+            ```
         
     - For **A** records, do
         
         ```markdown
         dig intodeeplearning.com +noall +answer -t A
         ```
+         - You should get
+
+            ```bash
+            ;; global options: +cmd
+            intodeeplearning.com.	928	IN	A	185.199.109.153
+            intodeeplearning.com.	928	IN	A	185.199.108.153
+            intodeeplearning.com.	928	IN	A	185.199.110.153
+            intodeeplearning.com.	928	IN	A	185.199.111.153
+            ```
         
 
 ## Step 4. Enable HTTPS for you GitHub Pages
