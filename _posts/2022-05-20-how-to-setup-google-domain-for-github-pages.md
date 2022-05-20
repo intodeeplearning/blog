@@ -22,19 +22,17 @@ If you’d like to replace the default address with your custom domain, such as 
 
 ### What you’ll need
 
-- a GitHub repository ready for publishing, such as [https://github.com/intodeeplearning/blog](https://github.com/intodeeplearning/blog)
-- a purchased [google domain](https://domains.google), such as `intodeeplearning.com`
+- A GitHub repository ready for publishing, such as [https://github.com/intodeeplearning/blog](https://github.com/intodeeplearning/blog)
+- A purchased [google domain](https://domains.google), such as `intodeeplearning.com`
 
-### Step 1. Setup in your Github Repo
+## Step 1. Setup in your Github Repo
 
 - Go to Settings > Pages > Custom domain, and add you custom domain name.
     
     {% include image_box_shadow.html file_id="[10wHsLyGzueGM2HnZ-5nBYe61afuEq9GX](https://drive.google.com/file/d/10wHsLyGzueGM2HnZ-5nBYe61afuEq9GX/view?usp=sharing)" alt="example image" %}
     
 
-![Screen Shot 2022-05-19 at 10.52.55 AM.png](How%20to%20setup%20google%20domain%20for%20your%20fastpages%20site%202b91c1051f4d44c0b3cce1dbefb3e027/Screen_Shot_2022-05-19_at_10.52.55_AM.png)
-
-### Step 2. (Optional) You can skip this step if you are NOT using a site generator, such as fastpages, or [Jekyll](https://jekyllrb.com).
+## Step 2. (Optional) You can skip this step if you are NOT using a site generator, such as fastpages, or [Jekyll](https://jekyllrb.com).
 
 If you are using [fastpages](https://fastpages.fast.ai).
 
@@ -59,10 +57,10 @@ If you are using [fastpages](https://fastpages.fast.ai).
     
 - you can also refer to [Fastpages: using a custom domain](https://github.com/fastai/fastpages/blob/master/_fastpages_docs/_setup_pr_template.md#optional-using-a-custom-domain)
 
-### Step 3. Let your custom domain point to your GitHub Pages
+## Step 3. Let your custom domain point to your GitHub Pages
 
-- go to your [google domain registrar](https://domains.google.com/registrar/) and select your domain.
-- go to the **DNS** tab
+- Go to your [google domain registrar](https://domains.google.com/registrar/) and select your domain.
+- Go to the **DNS** tab
     
     {% include image_box_shadow.html file_id="[10wHsLyGzueGM2HnZ-5nBYe61afuEq9GX](https://drive.google.com/file/d/10wHsLyGzueGM2HnZ-5nBYe61afuEq9GX/view?usp=sharing)" alt="example image" %}
     
@@ -70,7 +68,7 @@ If you are using [fastpages](https://fastpages.fast.ai).
     
     {% include image_box_shadow.html file_id="1WN0Uh8owkLyJDHWHEptSzMcuHU8rrzn8" alt="example image" %}
     
-- create a `CNAME` record that points your `www`subdomain, such as  `www.intodeeplearning.com` , to  `<your_github_username>.github.io`   such as `intodeeplearning.github.io.`
+- Create a `CNAME` record that points your `www`subdomain, such as  `www.intodeeplearning.com` , to  `<your_github_username>.github.io`   such as `intodeeplearning.github.io.`
     
     {% include image_box_shadow.html file_id="1oJGTCf1twGn1fOXoIGbCLaTx2yf5E2en" alt="example image" %}
     
@@ -78,11 +76,11 @@ If you are using [fastpages](https://fastpages.fast.ai).
         
         {% include image_box_shadow.html file_id="1eqxz86jP8dGRqyPIhNZNh7K915yAw6EY" alt="example image" %}
         
-- create an `A` record that points to the IP addresses for Github Pages.
+- Create an `A` record that points to the IP addresses for Github Pages.
     
     {% include image_box_shadow.html file_id="18eTpk2MdrulOCcpSQpbcrYMEG44FwIYZ" alt="example image" %}
     
-    - IP adresses in the screenshot
+    - IP addresses in the screenshot
         
         ```markdown
         185.199.108.153
@@ -91,7 +89,7 @@ If you are using [fastpages](https://fastpages.fast.ai).
         185.199.111.153
         ```
         
-    - check [here](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain) if there's an update in the IP addresses.
+    - Check [here](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain) if there's an update in the IP addresses.
 - Open Terminal to confirm that your DNS record configured correctly
     - For `CNAME` records, do
         
@@ -106,7 +104,7 @@ If you are using [fastpages](https://fastpages.fast.ai).
         ```
         
 
-### Step 4. Enable HTTPS for you GitHub Pages
+## Step 4. Enable HTTPS for you GitHub Pages
 
 - Go to your github repository settings page, under Settings > Pages, remove your custom domain and save.
 - Then add it back and save again.
@@ -115,14 +113,12 @@ If you are using [fastpages](https://fastpages.fast.ai).
     {% include image_box_shadow.html file_id="1z5WlJs0MsnlACouqH5H-dlfnA2jd5sYJ" alt="example image" %}
     
 
+- Note: DNS changes can take **up to 24 hours** to propagate. 
+    - You may use [dns propagation checker](https://www.whatsmydns.net/#A/intodeeplearning.com) to check if you DNS has successfully propagated.
+    - More questions -> See [GitHub Pages trouble shoot](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)
+
 
 That's it! Your website should be publishing at your custom domain now!
-
-{% include info.html text="DNS changes can take **up to 24 hours** to propagate. 
-- You may use [dns propagation checker](https://www.whatsmydns.net/#A/intodeeplearning.com) to check if you DNS has successfully propagated.
-- More questions -> See [GitHub Pages trouble shoot](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages)
-" %}
-
 
 ## Reference
 
@@ -132,7 +128,7 @@ That's it! Your website should be publishing at your custom domain now!
         > [We recommend always using a `www` subdomain configurations](https://docs.github.com/en/enterprise-cloud@latest/pages/configuring-a-custom-domain-for-your-github-pages-site/about-custom-domains-and-github-pages) for your site. If you configure a `www` subdomain, we automatically attempt to secure the associated apex domain.
         > 
         
-        > If you configure `[www.example.com](http://www.example.com)` as the custom domain for your site, and you have GitHub Pages DNS records set up for the apex and `www` domains, then `example.com` will redirect to `www.example.com`
+        > If you configure `www.example.com` as the custom domain for your site, and you have GitHub Pages DNS records set up for the apex and `www` domains, then `example.com` will redirect to `www.example.com`
         > 
         
         > `www`subdomains are the most stable type of custom domain because `www` subdomains are not affected by changes to the IP addresses of GitHub Enterprise Cloud's servers.
