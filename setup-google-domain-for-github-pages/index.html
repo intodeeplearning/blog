@@ -110,7 +110,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      3 min read
     
 </span></p>
 
@@ -275,6 +275,22 @@ window.onload = wrap_img;
         <div class="language-markdown highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>  dig www.intodeeplearning.com +nostats +nocomments +nocmd
 </code></pre></div>        </div>
+        <ul>
+          <li>
+            <p>You should get</p>
+
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>  <span class="p">;</span> &lt;&lt;<span class="o">&gt;&gt;</span> DiG 9.10.6 &lt;&lt;<span class="o">&gt;&gt;</span> www.intodeeplearning.com +nostats +nocomments +nocmd
+  <span class="p">;;</span> global options: +cmd
+  <span class="p">;</span>www.intodeeplearning.com.	IN	A
+  www.intodeeplearning.com. 3312	IN	CNAME	intodeeplearning.github.io.
+  intodeeplearning.github.io. 3312 IN	A	185.199.110.153
+  intodeeplearning.github.io. 3312 IN	A	185.199.111.153
+  intodeeplearning.github.io. 3312 IN	A	185.199.109.153
+  intodeeplearning.github.io. 3312 IN	A	185.199.108.153
+</code></pre></div>            </div>
+          </li>
+        </ul>
       </li>
       <li>
         <p>For <strong>A</strong> records, do</p>
@@ -282,6 +298,19 @@ window.onload = wrap_img;
         <div class="language-markdown highlighter-rouge">
 <div class="highlight"><pre class="highlight"><code>  dig intodeeplearning.com +noall +answer -t A
 </code></pre></div>        </div>
+        <ul>
+          <li>
+            <p>You should get</p>
+
+            <div class="language-bash highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code> <span class="p">;;</span> global options: +cmd
+ intodeeplearning.com.	928	IN	A	185.199.109.153
+ intodeeplearning.com.	928	IN	A	185.199.108.153
+ intodeeplearning.com.	928	IN	A	185.199.110.153
+ intodeeplearning.com.	928	IN	A	185.199.111.153
+</code></pre></div>            </div>
+          </li>
+        </ul>
       </li>
     </ul>
   </li>
