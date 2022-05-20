@@ -18,14 +18,14 @@ If you'd like to replace the default address with your custom domain, such as [h
 ### What you will get in this tutorial
 
 - Setting up a custom **www** subdomain, such as **www.example.com**, for your GitHub Pages
-
 - having the apex domain, such as  **example.com**, automatically redirect to **www.example.com**
 
 ### What you need
 
 - A GitHub repository ready for publishing, such as [https://github.com/intodeeplearning/blog](https://github.com/intodeeplearning/blog)
-
 - A purchased [google domain](https://domains.google), such as "**intodeeplearning.com**"
+
+<br><br>
 
 ## Step 1. Setup in your Github Repo
 
@@ -66,10 +66,12 @@ If you are using [fastpages](https://fastpages.fast.ai).
 - Go to the **DNS** tab
     
     {% include image_box_shadow.html file_id="1WJldVA2ZBAoUib34drCYYQbyOopxe56h" alt="example image" %}
+<br>
     
 - Under the **Resource records** section, click **Manage custom records**
     
     {% include image_box_shadow.html file_id="1WN0Uh8owkLyJDHWHEptSzMcuHU8rrzn8" alt="example image" %}
+<br>
     
 - Create a **CNAME** record that points your **www** subdomain to `<your_github_username>.github.io`
 
@@ -78,6 +80,7 @@ If you are using [fastpages](https://fastpages.fast.ai).
     - Do NOT include the repository name, such as [intodeeplearning.github.io/blog](http://intodeeplearning.github.io/blog). If you include your repository name in the CNAME record to your DNS provider, you’ll get the below message at your GitHub Settings > Pages > Custom domain
         
         {% include image_box_shadow.html file_id="1eqxz86jP8dGRqyPIhNZNh7K915yAw6EY" alt="example image" %}
+<br>
         
 - Create an **A** record that points to the IP addresses for Github Pages.
     
@@ -93,6 +96,7 @@ If you are using [fastpages](https://fastpages.fast.ai).
         ```
         
     - Check [here](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain) if there's an update in the IP addresses.
+<br>
 
 - Open **Terminal** to confirm that your DNS record configured correctly
 
@@ -126,7 +130,7 @@ If you are using [fastpages](https://fastpages.fast.ai).
 
     - See [GitHub Pages trouble shoot](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/troubleshooting-custom-domains-and-github-pages) for more questions.
 
-
+<br><br>
 That's it! Your website should be publishing at your custom domain now!
 
 ## Reference
