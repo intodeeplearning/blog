@@ -149,25 +149,21 @@ window.onload = wrap_img;
 <a class="anchor" href="#what-you-will-get-in-this-tutorial" aria-hidden="true"><span class="octicon octicon-link"></span></a>What you will get in this tutorial</h3>
 
 <ul>
-  <li>
-    <p>Setting up a custom <strong>www</strong> subdomain, such as <strong>www.example.com</strong>, for your GitHub Pages</p>
-  </li>
-  <li>
-    <p>having the apex domain, such as  <strong>example.com</strong>, automatically redirect to <strong>www.example.com</strong></p>
-  </li>
+  <li>Setting up a custom <strong>www</strong> subdomain, such as <strong>www.example.com</strong>, for your GitHub Pages</li>
+  <li>having the apex domain, such as  <strong>example.com</strong>, automatically redirect to <strong>www.example.com</strong>
+</li>
 </ul>
 
 <h3 id="what-you-need">
 <a class="anchor" href="#what-you-need" aria-hidden="true"><span class="octicon octicon-link"></span></a>What you need</h3>
 
 <ul>
-  <li>
-    <p>A GitHub repository ready for publishing, such as <a href="https://github.com/intodeeplearning/blog">https://github.com/intodeeplearning/blog</a></p>
-  </li>
-  <li>
-    <p>A purchased <a href="https://domains.google">google domain</a>, such as “<strong>intodeeplearning.com</strong>”</p>
-  </li>
+  <li>A GitHub repository ready for publishing, such as <a href="https://github.com/intodeeplearning/blog">https://github.com/intodeeplearning/blog</a>
+</li>
+  <li>A purchased <a href="https://domains.google">google domain</a>, such as “<strong>intodeeplearning.com</strong>”</li>
 </ul>
+
+<p><br><br></p>
 
 <h2 id="step-1-setup-in-your-github-repo">
 <a class="anchor" href="#step-1-setup-in-your-github-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 1. Setup in your Github Repo</h2>
@@ -224,12 +220,14 @@ window.onload = wrap_img;
   <li>
     <p>Go to the <strong>DNS</strong> tab</p>
 
-    <p><img src="https://drive.google.com/uc?id=1WJldVA2ZBAoUib34drCYYQbyOopxe56h" alt="example image" style="display: block; margin-right: auto; margin-left: auto; width: 90%;    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"></p>
+    <p><img src="https://drive.google.com/uc?id=1WJldVA2ZBAoUib34drCYYQbyOopxe56h" alt="example image" style="display: block; margin-right: auto; margin-left: auto; width: 90%;    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+<br></p>
   </li>
   <li>
     <p>Under the <strong>Resource records</strong> section, click <strong>Manage custom records</strong></p>
 
-    <p><img src="https://drive.google.com/uc?id=1WN0Uh8owkLyJDHWHEptSzMcuHU8rrzn8" alt="example image" style="display: block; margin-right: auto; margin-left: auto; width: 90%;    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"></p>
+    <p><img src="https://drive.google.com/uc?id=1WN0Uh8owkLyJDHWHEptSzMcuHU8rrzn8" alt="example image" style="display: block; margin-right: auto; margin-left: auto; width: 90%;    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+<br></p>
   </li>
   <li>
     <p>Create a <strong>CNAME</strong> record that points your <strong>www</strong> subdomain to <code class="language-plaintext highlighter-rouge">&lt;your_github_username&gt;.github.io</code></p>
@@ -240,7 +238,8 @@ window.onload = wrap_img;
       <li>
         <p>Do NOT include the repository name, such as <a href="http://intodeeplearning.github.io/blog">intodeeplearning.github.io/blog</a>. If you include your repository name in the CNAME record to your DNS provider, you’ll get the below message at your GitHub Settings &gt; Pages &gt; Custom domain</p>
 
-        <p><img src="https://drive.google.com/uc?id=1eqxz86jP8dGRqyPIhNZNh7K915yAw6EY" alt="example image" style="display: block; margin-right: auto; margin-left: auto; width: 90%;    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"></p>
+        <p><img src="https://drive.google.com/uc?id=1eqxz86jP8dGRqyPIhNZNh7K915yAw6EY" alt="example image" style="display: block; margin-right: auto; margin-left: auto; width: 90%;    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)">
+<br></p>
       </li>
     </ul>
   </li>
@@ -261,7 +260,8 @@ window.onload = wrap_img;
 </code></pre></div>        </div>
       </li>
       <li>
-        <p>Check <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">here</a> if there’s an update in the IP addresses.</p>
+        <p>Check <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain">here</a> if there’s an update in the IP addresses.
+<br></p>
       </li>
     </ul>
   </li>
@@ -316,7 +316,8 @@ window.onload = wrap_img;
   </li>
 </ul>
 
-<p>That’s it! Your website should be publishing at your custom domain now!</p>
+<p><br><br>
+That’s it! Your website should be publishing at your custom domain now!</p>
 
 <h2 id="reference">
 <a class="anchor" href="#reference" aria-hidden="true"><span class="octicon octicon-link"></span></a>Reference</h2>
