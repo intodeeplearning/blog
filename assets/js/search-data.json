@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "How to zip a folder and unzip a file in python",
-            "content": "Create an example folder with files . %%shell mkdir test touch test/file1.txt . mkdir: cannot create directory ‘test’: File exists . . Zip a folder . import shutil dir_name = &#39;/content/test/&#39; output_filename = &#39;test&#39; shutil.make_archive(output_filename, &#39;zip&#39;, dir_name) . &#39;/content/test.zip&#39; . Unzip a file . import zipfile path_to_zip_file =&#39;/content/test.zip&#39; directory_to_extract_to = &#39;/content/test1/&#39; with zipfile.ZipFile(path_to_zip_file, &#39;r&#39;) as zip_ref: zip_ref.extractall(directory_to_extract_to) . import os if os.path.exists(path_to_zip_file): os.remove(path_to_zip_file) .",
+            "content": "Create an example folder with files . %%shell mkdir test touch test/file1.txt touch test/file2.txt . . Zip a folder . import shutil dir_name = &#39;/content/test/&#39; output_filename = &#39;test&#39; shutil.make_archive(output_filename, &#39;zip&#39;, dir_name) . &#39;/content/test.zip&#39; . Unzip a file . import zipfile path_to_zip_file =&#39;/content/test.zip&#39; directory_to_extract_to = &#39;/content/test1/&#39; with zipfile.ZipFile(path_to_zip_file, &#39;r&#39;) as zip_ref: zip_ref.extractall(directory_to_extract_to) . use the code below to delete your zip file if needed: . import os if os.path.exists(path_to_zip_file): os.remove(path_to_zip_file) .",
             "url": "https://www.intodeeplearning.com/how-to-zip-a-folder-and-unzip-a-file%5C/",
             "relUrl": "/how-to-zip-a-folder-and-unzip-a-file\/",
             "date": " • May 27, 2022"
