@@ -6,6 +6,14 @@
 
 /*-----------------------------------*/
 /*----- ADD YOUR STYLES BELOW -------*/
+.site-header {
+ background-color: RoyalBlue;
+}
+
+.site-title, .page-link {
+    color: white !important;
+}
+
 
 // If you want to turn off dark background for syntax highlighting, comment or delete the below line.
 @import "minima/fastpages-dracula-highlight"; 
