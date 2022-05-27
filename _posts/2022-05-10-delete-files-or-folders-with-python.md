@@ -3,9 +3,9 @@ toc: true
 layout: post
 description: steps to delete files and folder using python
 categories: [Python Hacks]
-permalink: /how-to-delete-files-and-folders-with-python/
+permalink: /how-to-delete-files-and-folders-in-python/
 search_exclude: false
-title: How to delete files and folders with python
+title: How to delete files and folders in python
 show_tags: true
 ---
 ## Delete files
