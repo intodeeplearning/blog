@@ -46,10 +46,10 @@
   
     
         ,"post4": {
-            "title": "How to download files in google drive with python",
-            "content": "1. Get a Direct Link for Your Google Drive Files . a. open Google Drive . b. Right-click on your file . c. Click on Get Link . d. Make sure your file is available for “Anyone with the link” . . e. Click on Copy Link . 2. Install gdown . gdown doc | . !pip install gdown . 3. Download the file in google drive using Python . import gdown url = &#39;https://drive.google.com/file/d/1uFTzwFc3tmS-D7azjMiJcxSfn71BPqKt/view?usp=sharing&#39; output_path = &#39;graph_ML.pk&#39; gdown.download(url, output_path, quiet=False,fuzzy=True) . Downloading... From: https://drive.google.com/uc?id=1uFTzwFc3tmS-D7azjMiJcxSfn71BPqKt To: /content/graph_ML.pk 100%|██████████| 1.94G/1.94G [00:17&lt;00:00, 109MB/s] . &#39;graph_ML.pk&#39; . . .",
-            "url": "https://www.intodeeplearning.com/how-to-download-files-in-gdrive-with-python/",
-            "relUrl": "/how-to-download-files-in-gdrive-with-python/",
+            "title": "How to download files or folders in google drive with python",
+            "content": "1. Get a Direct Link for Your Google Drive Files . a. open Google Drive . b. Right-click on your file . c. Click on Get Link . d. Make sure your file is available for “Anyone with the link” . . e. Click on Copy Link . 2. Install gdown . gdown doc | . !pip install gdown . 3. Download the file in google drive using Python . import gdown url = &#39;https://drive.google.com/file/d/1uFTzwFc3tmS-D7azjMiJcxSfn71BPqKt/view?usp=sharing&#39; output_path = &#39;graph_ML.pk&#39; gdown.download(url, output_path, quiet=False,fuzzy=True) . Downloading... From: https://drive.google.com/uc?id=1uFTzwFc3tmS-D7azjMiJcxSfn71BPqKt To: /content/graph_ML.pk 100%|██████████| 1.94G/1.94G [00:23&lt;00:00, 82.2MB/s] . &#39;graph_ML.pk&#39; . . 4. Download a folder in google drive using Python . import gdown url = &quot;https://drive.google.com/drive/folders/1HWFHKCprFzR7H7TYhrE-W7v4bz2Vc7Ia&quot; gdown.download_folder(url, quiet=True, use_cookies=False) . [&#39;/content/ihpperson_data_with_rules/civil_servant.csv&#39;, &#39;/content/ihpperson_data_with_rules/eunuch.csv&#39;, &#39;/content/ihpperson_data_with_rules/general.csv&#39;, &#39;/content/ihpperson_data_with_rules/remain_person.csv&#39;, &#39;/content/ihpperson_data_with_rules/special_general.csv&#39;] . .",
+            "url": "https://www.intodeeplearning.com/how-to-download-files-or-folders-in-gdrive-with-python/",
+            "relUrl": "/how-to-download-files-or-folders-in-gdrive-with-python/",
             "date": " • May 8, 2022"
         }
         
