@@ -429,7 +429,9 @@ pre code { font-size: 15px !important; }
 
 /*-----------------------------------*/
 /*----- ADD YOUR STYLES BELOW -------*/
-.site-header { background-color: AliceBlue; }
+.site-header, .site-nav { background-color: RoyalBlue; }
+
+.site-title, .page-link { color: white !important; }
 
 .language-python + .language-plaintext { border-left: 1px solid grey; margin-left: 1rem !important; }
 
