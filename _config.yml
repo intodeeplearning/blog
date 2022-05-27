@@ -6,8 +6,8 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-title: Into Deep Learning
-description: A learning progress in deep learning and research.
+title: IntoDeepLearning
+description: "into deep learning: a learning progress in deep learning, python, and research."
 github_username: intodeeplearning
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "blog"
