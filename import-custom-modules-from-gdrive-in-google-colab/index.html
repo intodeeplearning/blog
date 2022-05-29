@@ -4,21 +4,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Better ways to create a directory in python | IntoDeepLearning</title>
+<title>How to import custom modules (.py files) from google drive in google colab | IntoDeepLearning</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Better ways to create a directory in python" />
+<meta property="og:title" content="How to import custom modules (.py files) from google drive in google colab" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="a learning progress in deep learning, python, and research." />
 <meta property="og:description" content="a learning progress in deep learning, python, and research." />
-<link rel="canonical" href="https://www.intodeeplearning.com/better-ways-to-create-a-directory-in-python/" />
-<meta property="og:url" content="https://www.intodeeplearning.com/better-ways-to-create-a-directory-in-python/" />
+<link rel="canonical" href="https://www.intodeeplearning.com/import-custom-modules-from-gdrive-in-google-colab/" />
+<meta property="og:url" content="https://www.intodeeplearning.com/import-custom-modules-from-gdrive-in-google-colab/" />
 <meta property="og:site_name" content="IntoDeepLearning" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-05-28T00:00:00-05:00" />
+<meta property="article:published_time" content="2022-05-29T00:00:00-05:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Better ways to create a directory in python" />
+<meta property="twitter:title" content="How to import custom modules (.py files) from google drive in google colab" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-28T00:00:00-05:00","datePublished":"2022-05-28T00:00:00-05:00","description":"a learning progress in deep learning, python, and research.","headline":"Better ways to create a directory in python","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.intodeeplearning.com/better-ways-to-create-a-directory-in-python/"},"url":"https://www.intodeeplearning.com/better-ways-to-create-a-directory-in-python/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-05-29T00:00:00-05:00","datePublished":"2022-05-29T00:00:00-05:00","description":"a learning progress in deep learning, python, and research.","headline":"How to import custom modules (.py files) from google drive in google colab","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.intodeeplearning.com/import-custom-modules-from-gdrive-in-google-colab/"},"url":"https://www.intodeeplearning.com/import-custom-modules-from-gdrive-in-google-colab/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://www.intodeeplearning.com/feed.xml" title="IntoDeepLearning" /><!-- the google_analytics_id gets auto inserted from the config file -->
 
@@ -104,8 +104,8 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Better ways to create a directory in python</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-05-28T00:00:00-05:00" itemprop="datePublished">
-        May 28, 2022
+    <h1 class="post-title p-name" itemprop="name headline">How to import custom modules (.py files) from google drive in google colab</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-05-29T00:00:00-05:00" itemprop="datePublished">
+        May 29, 2022
       </time>
        • <span class="read-time" title="Estimated read time">
     
@@ -118,6 +118,9 @@ window.onload = wrap_img;
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
         <a class="category-tags-link" href="/categories/#Python Hacks">Python Hacks</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/categories/#Colab">Colab</a>
         
       
       </p>
@@ -128,24 +131,24 @@ window.onload = wrap_img;
         <div class="pb-5 d-flex flex-justify-center">
           <div class="px-2">
 
-    <a href="https://github.com/intodeeplearning/blog/tree/master/_notebooks/2022-05-28-better-ways-to-create-a-directory-in-python.ipynb" role="button" target="_blank">
+    <a href="https://github.com/intodeeplearning/blog/tree/master/_notebooks/2022-05-29-import-custom-modules-from-gdrive-in-google-colab.ipynb" role="button" target="_blank">
 <img class="notebook-badge-image" src="/assets/badges/github.svg" alt="View On GitHub">
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://mybinder.org/v2/gh/intodeeplearning/blog/master?filepath=_notebooks%2F2022-05-28-better-ways-to-create-a-directory-in-python.ipynb" target="_blank">
+    <a href="https://mybinder.org/v2/gh/intodeeplearning/blog/master?filepath=_notebooks%2F2022-05-29-import-custom-modules-from-gdrive-in-google-colab.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/assets/badges/binder.svg" alt="Open In Binder"/>
     </a>
 </div>
 
           <div class="px-2">
-    <a href="https://colab.research.google.com/github/intodeeplearning/blog/blob/master/_notebooks/2022-05-28-better-ways-to-create-a-directory-in-python.ipynb" target="_blank">
+    <a href="https://colab.research.google.com/github/intodeeplearning/blog/blob/master/_notebooks/2022-05-29-import-custom-modules-from-gdrive-in-google-colab.ipynb" target="_blank">
         <img class="notebook-badge-image" src="/assets/badges/colab.svg" alt="Open In Colab"/>
     </a>
 </div>
           <div class="px-2">
-  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2Fintodeeplearning%2Fblog%2Fblob%2Fmaster%2F_notebooks%2F2022-05-28-better-ways-to-create-a-directory-in-python.ipynb" target="_blank">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2Fintodeeplearning%2Fblog%2Fblob%2Fmaster%2F_notebooks%2F2022-05-29-import-custom-modules-from-gdrive-in-google-colab.ipynb" target="_blank">
       <img class="notebook-badge-image" src="/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
   </a>
 </div>
@@ -155,11 +158,13 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#1.-Mount-your-google-drive-in-google-colab">1. Mount your google drive in google colab </a></li>
+<li class="toc-entry toc-h2"><a href="#2.-Append-the-directory-to-your-python-path">2. Append the directory to your python path </a></li>
 </ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
-# file to edit: _notebooks/2022-05-28-better-ways-to-create-a-directory-in-python.ipynb
+# file to edit: _notebooks/2022-05-29-import-custom-modules-from-gdrive-in-google-colab.ipynb
 -->
 
 <div class="container" id="notebook-container">
@@ -167,20 +172,9 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>When you're creating a new directory in python, it's better to check if that directory exists first, in case your code run into error.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Example 1</strong></p>
-<ul>
-<li>use <code>os.path.exists()</code> to check if the directory's existence</li>
-<li>then create a directory with <code>os.mkdir()</code> only if it does not exist</li>
-</ul>
-
+<h2 id="1.-Mount-your-google-drive-in-google-colab">
+<a class="anchor" href="#1.-Mount-your-google-drive-in-google-colab" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. Mount your google drive in google colab<a class="anchor-link" href="#1.-Mount-your-google-drive-in-google-colab"> </a>
+</h2>
 </div>
 </div>
 </div>
@@ -191,10 +185,8 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">path_to_dir</span> <span class="o">=</span> <span class="s1">'/content/test'</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path_to_dir</span><span class="p">):</span>
-  <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path_to_dir</span><span class="p">)</span>
+<div class=" highlight hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">'/content/gdrive/'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -207,10 +199,80 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Example 2</strong></p>
-<ul>
-<li>use a try-except block to handle error </li>
-</ul>
+<h2 id="2.-Append-the-directory-to-your-python-path">
+<a class="anchor" href="#2.-Append-the-directory-to-your-python-path" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Append the directory to your python path<a class="anchor-link" href="#2.-Append-the-directory-to-your-python-path"> </a>
+</h2>
+<p>For example, if you want to import a <strong>.py</strong> file called <code>mymodule.py</code> in your google drive, which is saved in "/content/drive/MyDrive/example_folder", you need to import the path of the directory which saves <code>mymodule.py</code>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="c1"># the path of the directory which saves your .py file</span>
+<span class="n">src_dir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">'/content/drive/MyDrive/example_folder/'</span><span class="p">)</span>
+
+<span class="c1"># add the path to system path</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">src_dir</span><span class="p">))</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+  <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">src_dir</span><span class="p">))</span>
+
+<span class="c1"># print system path</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>['/content/drive/MyDrive/example_folder',
+ '/content/drive/MyDrive/example_folder/mymodule.py',
+ '',
+ '/content',
+ '/env/python',
+ '/usr/lib/python37.zip',
+ '/usr/lib/python3.7',
+ '/usr/lib/python3.7/lib-dynload',
+ '/usr/local/lib/python3.7/dist-packages',
+ '/usr/lib/python3/dist-packages',
+ '/usr/local/lib/python3.7/dist-packages/IPython/extensions',
+ '/root/.ipython']</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br><br><br>
+After you follow the above stes, you should see <code>/content/drive/MyDrive/example_folder</code> in <code>sys.path</code>.
+Now,try to import your custom module:</p>
 
 </div>
 </div>
@@ -222,12 +284,8 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">path_to_dir</span> <span class="o">=</span> <span class="s1">'/content/test'</span>
-<span class="k">try</span><span class="p">:</span> 
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path_to_dir</span> <span class="p">)</span> 
-<span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<div class=" highlight hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">mymodule</span> <span class="kn">import</span> <span class="n">welcome</span>
+<span class="n">welcome</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -240,7 +298,7 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[Errno 17] File exists: '/content/test'
+<pre>Nice to meet you!
 </pre>
 </div>
 </div>
@@ -251,45 +309,11 @@ window.onload = wrap_img;
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Example 3</strong></p>
-<ul>
-<li>use <code>os.mkdirs()</code> when there is any non-existent directory in your path</li>
-<li>for instance, you want to create a directory in called <code>/test2</code> in directory <code>/test1</code>, however directory <code>/test1</code> is missing.</li>
-</ul>
-
-</div>
-</div>
-</div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="n">path_to_dir</span> <span class="o">=</span> <span class="s1">'/content/test1/test2/'</span>
-<span class="k">try</span><span class="p">:</span> 
-    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">path_to_dir</span> <span class="p">)</span> 
-<span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span> 
-    <span class="nb">print</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
 </div>
 
 
 
-  </div><a class="u-url" href="/better-ways-to-create-a-directory-in-python/" hidden></a>
+  </div><a class="u-url" href="/import-custom-modules-from-gdrive-in-google-colab/" hidden></a>
 </article>
 
       </div>
