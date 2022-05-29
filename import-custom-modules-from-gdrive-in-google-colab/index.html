@@ -202,7 +202,7 @@ window.onload = wrap_img;
 <h2 id="2.-Append-the-directory-to-your-python-path">
 <a class="anchor" href="#2.-Append-the-directory-to-your-python-path" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. Append the directory to your python path<a class="anchor-link" href="#2.-Append-the-directory-to-your-python-path"> </a>
 </h2>
-<p>For example, if you want to import a <strong>.py</strong> file called <code>mymodule.py</code> in your google drive, which is saved in "/content/drive/MyDrive/example_folder", you need to import the path of the directory which saves <code>mymodule.py</code>.</p>
+<p>For example, if you want to import a <strong>.py</strong> file called <code>mymodule.py</code> in your google drive, which is saved in "/content/drive/MyDrive/example_folder", you need to add the path of the directory which saves <code>mymodule.py</code> to system path.</p>
 
 </div>
 </div>
@@ -210,9 +210,6 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
-<details class="description">
-      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
-        <p></p>
 <div class="input">
 
 <div class="inner_cell">
@@ -235,8 +232,10 @@ window.onload = wrap_img;
     </div>
 </div>
 </div>
-
-    </details>
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Output" data-close="Show Output"></summary>
+        <p>
+</p>
 <div class="output_wrapper">
 <div class="output">
 
@@ -246,7 +245,6 @@ window.onload = wrap_img;
 
 <div class="output_text output_subarea output_execute_result">
 <pre>['/content/drive/MyDrive/example_folder',
- '/content/drive/MyDrive/example_folder/mymodule.py',
  '',
  '/content',
  '/env/python',
@@ -264,6 +262,7 @@ window.onload = wrap_img;
 </div>
 </div>
 
+    </details>
 </div>
     
 
@@ -271,8 +270,8 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br><br><br>
-After you follow the above stes, you should see <code>/content/drive/MyDrive/example_folder</code> in <code>sys.path</code>.
-Now,try to import your custom module:</p>
+After you follow the above steps, you should see <code>/content/drive/MyDrive/example_folder</code> in <code>sys.path</code>.</p>
+<p>Now, try to import your custom module:</p>
 
 </div>
 </div>
