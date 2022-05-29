@@ -15,5 +15,6 @@ _notebooks/.ipynb_checkpoints
 __pycache__
 .DS_Store
 _notebooks/unpublished/
+_notebooks/code/
 Gemfile.lock
 settings.ini
