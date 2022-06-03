@@ -920,7 +920,7 @@ batch index: 6,
 <a class="anchor" href="#RandomSampler" aria-hidden="true"><span class="octicon octicon-link"></span></a>RandomSampler<a class="anchor-link" href="#RandomSampler"> </a>
 </h3>
 <p>To randomize the data loading order in <code>news_dataloader</code>, we can</p>
-<p>**1. set the parameter <code>shuffle</code> to <code>True</code></p>
+<p><strong>1. set the parameter <code>shuffle</code> to <code>True</code></strong></p>
 
 </div>
 </div>
@@ -1177,6 +1177,7 @@ batch index: 6,
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Sometimes, we might want to get the random indices from the DataLoader.</p>
 <p>One way to do this is to let the <code>__getitem__</code> method in Dataset return a triple (index, data, label)</p>
+<p><strong>Define a new <code>NewsDataset</code> class:</strong></p>
 
 </div>
 </div>
