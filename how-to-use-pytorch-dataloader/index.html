@@ -157,19 +157,14 @@ window.onload = wrap_img;
     <ul id="toc" class="section-nav">
 <li class="toc-entry toc-h2"><a href="#What-are-pytorch-DataLoader-and-Dataset">What are pytorch DataLoader and Dataset </a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#creating-a-custom-dataset">Creating a Custom Dataset</a></li>
-<li class="toc-entry toc-h3"><a href="#initiating-a-dataloader">Initiating a DataLoader</a></li>
+<li class="toc-entry toc-h3"><a href="#Creating-a-Custom-Dataset">Creating a Custom Dataset </a></li>
+<li class="toc-entry toc-h3"><a href="#Initiating-a-DataLoader">Initiating a DataLoader </a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h2"><a href="#the-data-loading-order-and-sampler">The data loading order and Sampler</a>
+<li class="toc-entry toc-h2"><a href="#The-data-loading-order-and-Sampler">The data loading order and Sampler </a>
 <ul>
-<li class="toc-entry toc-h3"><a href="#sequentialsampler">SequentialSampler</a></li>
-<li class="toc-entry toc-h3"><a href="#RandomSampler">RandomSampler </a>
-<ul>
-<li class="toc-entry toc-h4"><a href="#1.-set-the-parameter-shuffle-to-True">1. set the parameter shuffle to True </a></li>
-<li class="toc-entry toc-h4"><a href="#2-pass-a-randomsampler-to-a-dataloader">2. Pass a RandomSampler to a DataLoader</a></li>
-</ul>
-</li>
+<li class="toc-entry toc-h3"><a href="#SequentialSampler">SequentialSampler </a></li>
+<li class="toc-entry toc-h3"><a href="#RandomSampler">RandomSampler </a></li>
 </ul>
 </li>
 <li class="toc-entry toc-h2"><a href="#Get-the-random-indices-from-RandomSampler">Get the random indices from RandomSampler </a></li>
@@ -218,8 +213,16 @@ window.onload = wrap_img;
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br></p>
-<h3>
-<a class="anchor" href="#creating-a-custom-dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a Custom Dataset</h3>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-a-Custom-Dataset">
+<a class="anchor" href="#Creating-a-Custom-Dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a Custom Dataset<a class="anchor-link" href="#Creating-a-Custom-Dataset"> </a>
+</h3>
 </div>
 </div>
 </div>
@@ -274,8 +277,15 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br>
-<b>Creating a DataFrame with news data</b></p>
+<p><br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Creating a DataFrame with news data</strong></p>
 <p>To see how this custom dataset works, let's create a DataFrame with some news data from <a href="https://huggingface.co/datasets/ag_news">agnews</a> dataset and put it into a <code>NewsDataset</code> we just created.</p>
 <p>You can refer <a href="https://www.intodeeplearning.com/how-to-load-datasets-from-hugging-face-datasets/">here</a> for a more detailed tutorial on loading datasets from the Hugging Face Datasets.</p>
 
@@ -601,10 +611,17 @@ Now check if the <code>news_dataset</code> is indexable.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br></p>
-<p></p>
-<h3>
-<a class="anchor" href="#initiating-a-dataloader" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initiating a DataLoader</h3>
-A <b>DataLoader</b> splits a dataset into batches which can be used for training.
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Initiating-a-DataLoader">
+<a class="anchor" href="#Initiating-a-DataLoader" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initiating a DataLoader<a class="anchor-link" href="#Initiating-a-DataLoader"> </a>
+</h3>
+<p>A <strong>DataLoader</strong> splits a dataset into batches which can be used for training.</p>
 <p>You can adjust the batch size with the parameter <code>batch_size</code>.</p>
 
 </div>
@@ -692,8 +709,16 @@ batch index: 6,
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br></p>
-<h2>
-<a class="anchor" href="#the-data-loading-order-and-sampler" aria-hidden="true"><span class="octicon octicon-link"></span></a>The data loading order and Sampler</h2>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-data-loading-order-and-Sampler">
+<a class="anchor" href="#The-data-loading-order-and-Sampler" aria-hidden="true"><span class="octicon octicon-link"></span></a>The data loading order and Sampler<a class="anchor-link" href="#The-data-loading-order-and-Sampler"> </a>
+</h2>
 <p>A DataLoader leverages a <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.Sampler">Sampler</a> to generate indices of dataset for each batch.
 We can use either the parameter <code>shuffle</code> or <code>sampler</code> to adjust the order of indices.</p>
 
@@ -704,8 +729,16 @@ We can use either the parameter <code>shuffle</code> or <code>sampler</code> to 
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br></p>
-<h3>
-<a class="anchor" href="#sequentialsampler" aria-hidden="true"><span class="octicon octicon-link"></span></a>SequentialSampler</h3>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="SequentialSampler">
+<a class="anchor" href="#SequentialSampler" aria-hidden="true"><span class="octicon octicon-link"></span></a>SequentialSampler<a class="anchor-link" href="#SequentialSampler"> </a>
+</h3>
 <p>By default, the parameter <code>shuffle</code> is <code>False</code>. And the DataLoader will use a <a href="https://pytorch.org/cppdocs/api/classtorch_1_1data_1_1samplers_1_1_sequential_sampler.html">SequentialSampler</a> that returns indices sequentially.</p>
 
 </div>
@@ -876,13 +909,19 @@ batch index: 6,
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="RandomSampler">
 <a class="anchor" href="#RandomSampler" aria-hidden="true"><span class="octicon octicon-link"></span></a>RandomSampler<a class="anchor-link" href="#RandomSampler"> </a>
 </h3>
 <p>To randomize the data loading order in <code>news_dataloader</code>, we can</p>
-<h4 id="1.-set-the-parameter-shuffle-to-True">
-<a class="anchor" href="#1.-set-the-parameter-shuffle-to-True" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>1. set the parameter <code>shuffle</code> to <code>True</code></strong><a class="anchor-link" href="#1.-set-the-parameter-shuffle-to-True"> </a>
-</h4>
+<p>**1. set the parameter <code>shuffle</code> to <code>True</code></p>
+
 </div>
 </div>
 </div>
@@ -991,9 +1030,7 @@ batch index: 6,
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4>
-<a class="anchor" href="#2-pass-a-randomsampler-to-a-dataloader" aria-hidden="true"><span class="octicon octicon-link"></span></a><b>2. Pass a RandomSampler to a DataLoader</b>
-</h4>
+<p><strong>2. Pass a RandomSampler to a DataLoader</strong></p>
 <p><a href="https://pytorch.org/cppdocs/api/classtorch_1_1data_1_1samplers_1_1_random_sampler.html">RandomSampler</a> returns random indices.</p>
 
 </div>
