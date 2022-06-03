@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>How to use pytorch DataLoader | IntoDeepLearning</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="How to use pytorch DataLoader" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="a learning progress in deep learning, python, and research." />
+<meta property="og:description" content="a learning progress in deep learning, python, and research." />
+<link rel="canonical" href="https://www.intodeeplearning.com/how-to-use-pytorch-dataloader/" />
+<meta property="og:url" content="https://www.intodeeplearning.com/how-to-use-pytorch-dataloader/" />
+<meta property="og:site_name" content="IntoDeepLearning" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-06-02T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How to use pytorch DataLoader" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-06-02T00:00:00-05:00","datePublished":"2022-06-02T00:00:00-05:00","description":"a learning progress in deep learning, python, and research.","headline":"How to use pytorch DataLoader","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.intodeeplearning.com/how-to-use-pytorch-dataloader/"},"url":"https://www.intodeeplearning.com/how-to-use-pytorch-dataloader/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://www.intodeeplearning.com/feed.xml" title="IntoDeepLearning" /><!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Q10JH5BST"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3Q10JH5BST');
+</script>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">IntoDeepLearning</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/search/">Search</a><a class="page-link" href="/about/">About Me</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">How to use pytorch DataLoader</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-06-02T00:00:00-05:00" itemprop="datePublished">
+        Jun 2, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      30 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/categories/#Pytorch">Pytorch</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/intodeeplearning/blog/tree/master/_notebooks/2022-06-02-pytorch-dataset-dataloader-and-sampler.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/intodeeplearning/blog/master?filepath=_notebooks%2F2022-06-02-pytorch-dataset-dataloader-and-sampler.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/intodeeplearning/blog/blob/master/_notebooks/2022-06-02-pytorch-dataset-dataloader-and-sampler.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+          <div class="px-2">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2Fintodeeplearning%2Fblog%2Fblob%2Fmaster%2F_notebooks%2F2022-06-02-pytorch-dataset-dataloader-and-sampler.ipynb" target="_blank">
+      <img class="notebook-badge-image" src="/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
+  </a>
+</div>
+
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#What-are-pytorch-DataLoader-and-Dataset">What are pytorch DataLoader and Dataset </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Creating-a-Custom-Dataset">Creating a Custom Dataset </a></li>
+<li class="toc-entry toc-h3"><a href="#Initiating-a-DataLoader">Initiating a DataLoader </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#The-data-loading-order-and-Sampler">The data loading order and Sampler </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#SequentialSampler">SequentialSampler </a></li>
+<li class="toc-entry toc-h3"><a href="#RandomSampler">RandomSampler </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Get-the-random-indices-from-RandomSampler">Get the random indices from RandomSampler </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-06-02-pytorch-dataset-dataloader-and-sampler.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you use pytorch as your deep learning framework, it's likely that you'll need to use <a href="https://pytorch.org/docs/stable/data.html#loading-batched-and-non-batched-data">DataLoader</a> in your model training loop.</p>
+<p>In this tutorial, you'll learn about</p>
+<ul>
+<li>How to construct a custom Dataset class</li>
+<li>How to use DataLoader to split a dataset into batches</li>
+<li>How to randomize a dataset in DataLoader</li>
+<li>How to return the randomized index in DataLoader</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="What-are-pytorch-DataLoader-and-Dataset">
+<a class="anchor" href="#What-are-pytorch-DataLoader-and-Dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>What are pytorch DataLoader and Dataset<a class="anchor-link" href="#What-are-pytorch-DataLoader-and-Dataset"> </a>
+</h2>
+<p>A <strong>Dataset</strong> is a container of your data that</p>
+<ul>
+<li>has a length attribute, i.e. you can do <code>len(dataset)</code>
+</li>
+<li>is indexable, i.e.you can do <code>dataset[index]</code>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br></p>
+<h3 id="Creating-a-Custom-Dataset">
+<a class="anchor" href="#Creating-a-Custom-Dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a Custom Dataset<a class="anchor-link" href="#Creating-a-Custom-Dataset"> </a>
+</h3>
+<p>A custom Dataset class must have three functions:</p>
+<ul>
+<li>
+<code>__init__</code> : instantiates the Dataset object</li>
+<li>
+<code>__len__</code>: returns the number of samples in the dataset</li>
+<li>
+<code>__getitem__</code>: loads and returns a sample from the dataset at the given index idx</li>
+</ul>
+<p>Here's an example custom dataset that takes in a pandas DataFrame with columns "text" and "label".</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="k">class</span> <span class="nc">NewsDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">texts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'text'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texts</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="k">return</span>  <span class="n">text</span><span class="p">,</span><span class="n">label</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To see how this custom dataset works, let's create a DataFrame with some news data from <a href="https://huggingface.co/datasets/ag_news">agnews</a> dataset and put it into a <code>NewsDataset</code> we just created.</p>
+<p>You can refer <a href="https://www.intodeeplearning.com/how-to-load-datasets-from-hugging-face-datasets/">here</a> for a more detailed tutorial on loading datasets from the Hugging Face Datasets.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
+<span class="n">agnews</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s1">'ag_news'</span><span class="p">)</span>
+<span class="n">agnews</span><span class="o">.</span><span class="n">set_format</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">"pandas"</span><span class="p">)</span>
+<span class="n">news_df</span> <span class="o">=</span> <span class="n">agnews</span><span class="p">[</span><span class="s1">'train'</span><span class="p">][:</span><span class="mi">25</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Output" data-close="Show Output"></summary>
+        <p>
+</p>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>Using custom data configuration default
+Reusing dataset ag_news (/root/.cache/huggingface/datasets/ag_news/default/0.0.0/bc2bcb40336ace1a0374767fc29bb0296cdaf8a6da7298436239c54d79180548)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">news_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+
+  <div id="df-ebccbc1e-34f5-4bc8-9442-bbe25c75d966">
+    <div class="colab-df-container">
+      <div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>text</th>
+      <th>label</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Wall St. Bears Claw Back Into the Black (Reute...</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Carlyle Looks Toward Commercial Aerospace (Reu...</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Oil and Economy Cloud Stocks' Outlook (Reuters...</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Iraq Halts Oil Exports from Main Southern Pipe...</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Oil prices soar to all-time record, posing new...</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-ebccbc1e-34f5-4bc8-9442-bbe25c75d966')" title="Convert this dataframe to an interactive table." style="display:none;">
+        
+  &lt;svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px"&gt;
+    <path d="M0 0h24v24H0V0z" fill="none"></path>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"></path><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"></path>
+  &lt;/svg&gt;
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-ebccbc1e-34f5-4bc8-9442-bbe25c75d966 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-ebccbc1e-34f5-4bc8-9442-bbe25c75d966');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">news_dataset</span> <span class="o">=</span> <span class="n">NewsDataset</span><span class="p">(</span><span class="n">news_df</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Check if <code>news_dataset</code> has a length and is indexable.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">news_dataset</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>25</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">news_dataset</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>('Fed minutes show dissent over inflation (USATODAY.com) USATODAY.com - Retail sales bounced back a bit in July, and new claims for jobless benefits fell last week, the government said Thursday, indicating the economy is improving from a midsummer slump.',
+ 2)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br></p>
+<h3 id="Initiating-a-DataLoader">
+<a class="anchor" href="#Initiating-a-DataLoader" aria-hidden="true"><span class="octicon octicon-link"></span></a>Initiating a DataLoader<a class="anchor-link" href="#Initiating-a-DataLoader"> </a>
+</h3>
+<p>A <strong>DataLoader</strong> splits a dataset into batches which can be used for training.</p>
+<p>You can adjust the batch size with the parameter <code>batch_size</code>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="n">news_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">news_dataset</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To load the data in batches, we can do</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="k">for</span> <span class="n">batch_index</span><span class="p">,</span> <span class="p">(</span><span class="n">batch</span><span class="p">,</span><span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">news_dataloader</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'batch index: </span><span class="si">{</span><span class="n">batch_index</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1"> label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1"> batch: </span><span class="si">{</span><span class="n">batch</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>batch index: 0,
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Wall St. Bears Claw Back Into the Black (Reuters) Reuters - Short-sellers, Wall Street's dwindling\\band of ultra-cynics, are seeing green again.", 'Carlyle Looks Toward Commercial Aerospace (Reuters) Reuters - Private investment firm Carlyle Group,\\which has a reputation for making well-timed and occasionally\\controversial plays in the defense industry, has quietly placed\\its bets on another part of the market.', "Oil and Economy Cloud Stocks' Outlook (Reuters) Reuters - Soaring crude prices plus worries\\about the economy and the outlook for earnings are expected to\\hang over the stock market next week during the depth of the\\summer doldrums.", 'Iraq Halts Oil Exports from Main Southern Pipeline (Reuters) Reuters - Authorities have halted oil export\\flows from the main pipeline in southern Iraq after\\intelligence showed a rebel militia could strike\\infrastructure, an oil official said on Saturday.')
+batch index: 1,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Oil prices soar to all-time record, posing new menace to US economy (AFP) AFP - Tearaway world oil prices, toppling records and straining wallets, present a new economic menace barely three months before the US presidential elections.', 'Stocks End Up, But Near Year Lows (Reuters) Reuters - Stocks ended slightly higher on Friday\\but stayed near lows for the year as oil prices surged past  #36;46\\a barrel, offsetting a positive outlook from computer maker\\Dell Inc. (DELL.O)', "Money Funds Fell in Latest Week (AP) AP - Assets of the nation's retail money market mutual funds fell by  #36;1.17 billion in the latest week to  #36;849.98 trillion, the Investment Company Institute said Thursday.", 'Fed minutes show dissent over inflation (USATODAY.com) USATODAY.com - Retail sales bounced back a bit in July, and new claims for jobless benefits fell last week, the government said Thursday, indicating the economy is improving from a midsummer slump.')
+batch index: 2,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Safety Net (Forbes.com) Forbes.com - After earning a PH.D. in Sociology, Danny Bazil Riley started to work as the general manager at a commercial real estate firm at an annual base salary of  #36;70,000. Soon after, a financial planner stopped by his desk to drop off brochures about insurance benefits available through his employer. But, at 32, "buying insurance was the furthest thing from my mind," says Riley.', "Wall St. Bears Claw Back Into the Black  NEW YORK (Reuters) - Short-sellers, Wall Street's dwindling  band of ultra-cynics, are seeing green again.", "Oil and Economy Cloud Stocks' Outlook  NEW YORK (Reuters) - Soaring crude prices plus worries  about the economy and the outlook for earnings are expected to  hang over the stock market next week during the depth of the  summer doldrums.", "No Need for OPEC to Pump More-Iran Gov  TEHRAN (Reuters) - OPEC can do nothing to douse scorching  oil prices when markets are already oversupplied by 2.8 million  barrels per day (bpd) of crude, Iran's OPEC governor said  Saturday, warning that prices could fall sharply.")
+batch index: 3,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Non-OPEC Nations Should Up Output-Purnomo  JAKARTA (Reuters) - Non-OPEC oil exporters should consider  increasing output to cool record crude prices, OPEC President  Purnomo Yusgiantoro said on Sunday.', "Google IPO Auction Off to Rocky Start  WASHINGTON/NEW YORK (Reuters) - The auction for Google  Inc.'s highly anticipated initial public offering got off to a  rocky start on Friday after the Web search company sidestepped  a bullet from U.S. securities regulators.", "Dollar Falls Broadly on Record Trade Gap  NEW YORK (Reuters) - The dollar tumbled broadly on Friday  after data showing a record U.S. trade deficit in June cast  fresh doubts on the economy's recovery and its ability to draw  foreign capital to fund the growing gap.", "Rescuing an Old Saver If you think you may need to help your elderly relatives with their finances, don't be shy about having the money talk -- soon.")
+batch index: 4,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Kids Rule for Back-to-School The purchasing power of kids is a big part of why the back-to-school season has become such a huge marketing phenomenon.', "In a Down Market, Head Toward Value Funds There is little cause for celebration in the stock market these days, but investors in value-focused mutual funds have reason to feel a bit smug -- if only because they've lost less than the folks who stuck with growth.", 'US trade deficit swells in June The US trade deficit has exploded 19 to a record \\$55.8bn as oil costs drove imports higher, according to a latest figures.', "Shell 'could be target for Total' Oil giant Shell could be bracing itself for a takeover attempt, possibly from French rival Total, a  press report claims.")
+batch index: 5,
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Google IPO faces Playboy slip-up The bidding gets underway for Google's public offering, despite last-minute worries over an interview with its bosses in Playboy magazine.", 'Eurozone economy keeps growing Official figures show the 12-nation eurozone economy continues to grow, but there are warnings it may slow down later in the year.', 'Expansion slows in Japan Economic growth in Japan slows down as the country experiences a drop in domestic and corporate spending.', 'Rand falls on shock SA rate cut Interest rates are trimmed to 7.5 by the South African central bank,  but the lack of warning hits the rand and surprises markets.')
+batch index: 6,
+ label: tensor([2]),
+ batch: ('Car prices down across the board The cost of buying both new and second hand cars fell sharply over the past five years, a new survey has found.',)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br></p>
+<h2 id="The-data-loading-order-and-Sampler">
+<a class="anchor" href="#The-data-loading-order-and-Sampler" aria-hidden="true"><span class="octicon octicon-link"></span></a>The data loading order and Sampler<a class="anchor-link" href="#The-data-loading-order-and-Sampler"> </a>
+</h2>
+<p>A DataLoader leverages a <a href="https://pytorch.org/docs/stable/data.html#torch.utils.data.Sampler">Sampler</a> to generate indices of dataset for each batch.
+We can use either the parameter <code>shuffle</code> or <code>sampler</code> to adjust the order of indices.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br></p>
+<h3 id="SequentialSampler">
+<a class="anchor" href="#SequentialSampler" aria-hidden="true"><span class="octicon octicon-link"></span></a>SequentialSampler<a class="anchor-link" href="#SequentialSampler"> </a>
+</h3>
+<p>By default, the parameter <code>shuffle</code> is <code>False</code>. And the DataLoader will use a <a href="https://pytorch.org/cppdocs/api/classtorch_1_1data_1_1samplers_1_1_sequential_sampler.html">SequentialSampler</a> that returns indices sequentially.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">news_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">news_dataset</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">news_dataloader</span><span class="o">.</span><span class="n">sampler</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.utils.data.sampler.SequentialSampler</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also explicitly create a SequentialSampler and pass it into a DataLoader using the parameter <code>sampler</code>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="c1"># initiate a SequentialSampler</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">SequentialSampler</span>
+<span class="n">sequential_news_sampler</span> <span class="o">=</span> <span class="n">SequentialSampler</span><span class="p">(</span><span class="n">news_dataset</span><span class="p">)</span>
+
+<span class="c1"># let's print out the indices in the SequentialSampler</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sequential_news_sampler</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Output" data-close="Show Output"></summary>
+        <p>
+</p>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">news_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">news_dataset</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">sampler</span> <span class="o">=</span> <span class="n">sequential_news_sampler</span> <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">batch_index</span><span class="p">,</span> <span class="p">(</span><span class="n">batch</span><span class="p">,</span><span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">news_dataloader</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'batch index: </span><span class="si">{</span><span class="n">batch_index</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1"> label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1"> batch: </span><span class="si">{</span><span class="n">batch</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>batch index: 0,
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Wall St. Bears Claw Back Into the Black (Reuters) Reuters - Short-sellers, Wall Street's dwindling\\band of ultra-cynics, are seeing green again.", 'Carlyle Looks Toward Commercial Aerospace (Reuters) Reuters - Private investment firm Carlyle Group,\\which has a reputation for making well-timed and occasionally\\controversial plays in the defense industry, has quietly placed\\its bets on another part of the market.', "Oil and Economy Cloud Stocks' Outlook (Reuters) Reuters - Soaring crude prices plus worries\\about the economy and the outlook for earnings are expected to\\hang over the stock market next week during the depth of the\\summer doldrums.", 'Iraq Halts Oil Exports from Main Southern Pipeline (Reuters) Reuters - Authorities have halted oil export\\flows from the main pipeline in southern Iraq after\\intelligence showed a rebel militia could strike\\infrastructure, an oil official said on Saturday.')
+batch index: 1,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Oil prices soar to all-time record, posing new menace to US economy (AFP) AFP - Tearaway world oil prices, toppling records and straining wallets, present a new economic menace barely three months before the US presidential elections.', 'Stocks End Up, But Near Year Lows (Reuters) Reuters - Stocks ended slightly higher on Friday\\but stayed near lows for the year as oil prices surged past  #36;46\\a barrel, offsetting a positive outlook from computer maker\\Dell Inc. (DELL.O)', "Money Funds Fell in Latest Week (AP) AP - Assets of the nation's retail money market mutual funds fell by  #36;1.17 billion in the latest week to  #36;849.98 trillion, the Investment Company Institute said Thursday.", 'Fed minutes show dissent over inflation (USATODAY.com) USATODAY.com - Retail sales bounced back a bit in July, and new claims for jobless benefits fell last week, the government said Thursday, indicating the economy is improving from a midsummer slump.')
+batch index: 2,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Safety Net (Forbes.com) Forbes.com - After earning a PH.D. in Sociology, Danny Bazil Riley started to work as the general manager at a commercial real estate firm at an annual base salary of  #36;70,000. Soon after, a financial planner stopped by his desk to drop off brochures about insurance benefits available through his employer. But, at 32, "buying insurance was the furthest thing from my mind," says Riley.', "Wall St. Bears Claw Back Into the Black  NEW YORK (Reuters) - Short-sellers, Wall Street's dwindling  band of ultra-cynics, are seeing green again.", "Oil and Economy Cloud Stocks' Outlook  NEW YORK (Reuters) - Soaring crude prices plus worries  about the economy and the outlook for earnings are expected to  hang over the stock market next week during the depth of the  summer doldrums.", "No Need for OPEC to Pump More-Iran Gov  TEHRAN (Reuters) - OPEC can do nothing to douse scorching  oil prices when markets are already oversupplied by 2.8 million  barrels per day (bpd) of crude, Iran's OPEC governor said  Saturday, warning that prices could fall sharply.")
+batch index: 3,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Non-OPEC Nations Should Up Output-Purnomo  JAKARTA (Reuters) - Non-OPEC oil exporters should consider  increasing output to cool record crude prices, OPEC President  Purnomo Yusgiantoro said on Sunday.', "Google IPO Auction Off to Rocky Start  WASHINGTON/NEW YORK (Reuters) - The auction for Google  Inc.'s highly anticipated initial public offering got off to a  rocky start on Friday after the Web search company sidestepped  a bullet from U.S. securities regulators.", "Dollar Falls Broadly on Record Trade Gap  NEW YORK (Reuters) - The dollar tumbled broadly on Friday  after data showing a record U.S. trade deficit in June cast  fresh doubts on the economy's recovery and its ability to draw  foreign capital to fund the growing gap.", "Rescuing an Old Saver If you think you may need to help your elderly relatives with their finances, don't be shy about having the money talk -- soon.")
+batch index: 4,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Kids Rule for Back-to-School The purchasing power of kids is a big part of why the back-to-school season has become such a huge marketing phenomenon.', "In a Down Market, Head Toward Value Funds There is little cause for celebration in the stock market these days, but investors in value-focused mutual funds have reason to feel a bit smug -- if only because they've lost less than the folks who stuck with growth.", 'US trade deficit swells in June The US trade deficit has exploded 19 to a record \\$55.8bn as oil costs drove imports higher, according to a latest figures.', "Shell 'could be target for Total' Oil giant Shell could be bracing itself for a takeover attempt, possibly from French rival Total, a  press report claims.")
+batch index: 5,
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Google IPO faces Playboy slip-up The bidding gets underway for Google's public offering, despite last-minute worries over an interview with its bosses in Playboy magazine.", 'Eurozone economy keeps growing Official figures show the 12-nation eurozone economy continues to grow, but there are warnings it may slow down later in the year.', 'Expansion slows in Japan Economic growth in Japan slows down as the country experiences a drop in domestic and corporate spending.', 'Rand falls on shock SA rate cut Interest rates are trimmed to 7.5 by the South African central bank,  but the lack of warning hits the rand and surprises markets.')
+batch index: 6,
+ label: tensor([2]),
+ batch: ('Car prices down across the board The cost of buying both new and second hand cars fell sharply over the past five years, a new survey has found.',)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br></p>
+<h3 id="RandomSampler">
+<a class="anchor" href="#RandomSampler" aria-hidden="true"><span class="octicon octicon-link"></span></a>RandomSampler<a class="anchor-link" href="#RandomSampler"> </a>
+</h3>
+<p>To randomize the data loading order in <code>news_dataloader</code>, we can</p>
+<p><strong>1. set the parameter <code>shuffle</code> to <code>True</code></strong></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">news_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">news_dataset</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">batch_index</span><span class="p">,</span> <span class="p">(</span><span class="n">batch</span><span class="p">,</span><span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">news_dataloader</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'batch index: </span><span class="si">{</span><span class="n">batch_index</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1"> label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1"> batch: </span><span class="si">{</span><span class="n">batch</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>batch index: 0,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('US trade deficit swells in June The US trade deficit has exploded 19 to a record \\$55.8bn as oil costs drove imports higher, according to a latest figures.', 'Kids Rule for Back-to-School The purchasing power of kids is a big part of why the back-to-school season has become such a huge marketing phenomenon.', 'Car prices down across the board The cost of buying both new and second hand cars fell sharply over the past five years, a new survey has found.', 'Fed minutes show dissent over inflation (USATODAY.com) USATODAY.com - Retail sales bounced back a bit in July, and new claims for jobless benefits fell last week, the government said Thursday, indicating the economy is improving from a midsummer slump.')
+batch index: 1,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Safety Net (Forbes.com) Forbes.com - After earning a PH.D. in Sociology, Danny Bazil Riley started to work as the general manager at a commercial real estate firm at an annual base salary of  #36;70,000. Soon after, a financial planner stopped by his desk to drop off brochures about insurance benefits available through his employer. But, at 32, "buying insurance was the furthest thing from my mind," says Riley.', 'Rand falls on shock SA rate cut Interest rates are trimmed to 7.5 by the South African central bank,  but the lack of warning hits the rand and surprises markets.', "Shell 'could be target for Total' Oil giant Shell could be bracing itself for a takeover attempt, possibly from French rival Total, a  press report claims.", "Rescuing an Old Saver If you think you may need to help your elderly relatives with their finances, don't be shy about having the money talk -- soon.")
+batch index: 2,
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Google IPO Auction Off to Rocky Start  WASHINGTON/NEW YORK (Reuters) - The auction for Google  Inc.'s highly anticipated initial public offering got off to a  rocky start on Friday after the Web search company sidestepped  a bullet from U.S. securities regulators.", 'Eurozone economy keeps growing Official figures show the 12-nation eurozone economy continues to grow, but there are warnings it may slow down later in the year.', "Google IPO faces Playboy slip-up The bidding gets underway for Google's public offering, despite last-minute worries over an interview with its bosses in Playboy magazine.", 'Oil prices soar to all-time record, posing new menace to US economy (AFP) AFP - Tearaway world oil prices, toppling records and straining wallets, present a new economic menace barely three months before the US presidential elections.')
+batch index: 3,
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Wall St. Bears Claw Back Into the Black (Reuters) Reuters - Short-sellers, Wall Street's dwindling\\band of ultra-cynics, are seeing green again.", "No Need for OPEC to Pump More-Iran Gov  TEHRAN (Reuters) - OPEC can do nothing to douse scorching  oil prices when markets are already oversupplied by 2.8 million  barrels per day (bpd) of crude, Iran's OPEC governor said  Saturday, warning that prices could fall sharply.", "Oil and Economy Cloud Stocks' Outlook  NEW YORK (Reuters) - Soaring crude prices plus worries  about the economy and the outlook for earnings are expected to  hang over the stock market next week during the depth of the  summer doldrums.", 'Stocks End Up, But Near Year Lows (Reuters) Reuters - Stocks ended slightly higher on Friday\\but stayed near lows for the year as oil prices surged past  #36;46\\a barrel, offsetting a positive outlook from computer maker\\Dell Inc. (DELL.O)')
+batch index: 4,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Iraq Halts Oil Exports from Main Southern Pipeline (Reuters) Reuters - Authorities have halted oil export\\flows from the main pipeline in southern Iraq after\\intelligence showed a rebel militia could strike\\infrastructure, an oil official said on Saturday.', "Oil and Economy Cloud Stocks' Outlook (Reuters) Reuters - Soaring crude prices plus worries\\about the economy and the outlook for earnings are expected to\\hang over the stock market next week during the depth of the\\summer doldrums.", 'Expansion slows in Japan Economic growth in Japan slows down as the country experiences a drop in domestic and corporate spending.', "Wall St. Bears Claw Back Into the Black  NEW YORK (Reuters) - Short-sellers, Wall Street's dwindling  band of ultra-cynics, are seeing green again.")
+batch index: 5,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Carlyle Looks Toward Commercial Aerospace (Reuters) Reuters - Private investment firm Carlyle Group,\\which has a reputation for making well-timed and occasionally\\controversial plays in the defense industry, has quietly placed\\its bets on another part of the market.', "Money Funds Fell in Latest Week (AP) AP - Assets of the nation's retail money market mutual funds fell by  #36;1.17 billion in the latest week to  #36;849.98 trillion, the Investment Company Institute said Thursday.", "Dollar Falls Broadly on Record Trade Gap  NEW YORK (Reuters) - The dollar tumbled broadly on Friday  after data showing a record U.S. trade deficit in June cast  fresh doubts on the economy's recovery and its ability to draw  foreign capital to fund the growing gap.", "In a Down Market, Head Toward Value Funds There is little cause for celebration in the stock market these days, but investors in value-focused mutual funds have reason to feel a bit smug -- if only because they've lost less than the folks who stuck with growth.")
+batch index: 6,
+ label: tensor([2]),
+ batch: ('Non-OPEC Nations Should Up Output-Purnomo  JAKARTA (Reuters) - Non-OPEC oil exporters should consider  increasing output to cool record crude prices, OPEC President  Purnomo Yusgiantoro said on Sunday.',)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that the dataloader will automatically use RandomSampler as its <code>sampler</code> when <code>shuffle</code> is <code>True</code></p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">news_dataloader</span><span class="o">.</span><span class="n">sampler</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>torch.utils.data.sampler.RandomSampler</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>2. Pass a RandomSampler to a DataLoader</strong></p>
+<p><a href="https://pytorch.org/cppdocs/api/classtorch_1_1data_1_1samplers_1_1_random_sampler.html">RandomSampler</a> returns random indices.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="c1"># initiate a RandomSampler</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">RandomSampler</span>
+<span class="n">random_news_sampler</span> <span class="o">=</span> <span class="n">RandomSampler</span><span class="p">(</span><span class="n">news_dataset</span><span class="p">)</span>
+
+<span class="c1"># print out the indices in the RandomSampler</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">random_news_sampler</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Output" data-close="Show Output"></summary>
+        <p>
+</p>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>15
+23
+16
+8
+1
+3
+7
+20
+12
+13
+9
+24
+0
+19
+5
+22
+6
+18
+21
+11
+10
+2
+17
+4
+14
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+    </details>
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can then pass <code>random_news_sampler</code> to the dataloader using the parameter <code>sampler</code>.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">random_news_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">news_dataset</span><span class="p">,</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">sampler</span><span class="o">=</span><span class="n">random_news_sampler</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">batch_index</span><span class="p">,</span> <span class="p">(</span><span class="n">batch</span><span class="p">,</span><span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">random_news_dataloader</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'batch index: </span><span class="si">{</span><span class="n">batch_index</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1"> label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1"> batch: </span><span class="si">{</span><span class="n">batch</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>batch index: 0,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Car prices down across the board The cost of buying both new and second hand cars fell sharply over the past five years, a new survey has found.', "In a Down Market, Head Toward Value Funds There is little cause for celebration in the stock market these days, but investors in value-focused mutual funds have reason to feel a bit smug -- if only because they've lost less than the folks who stuck with growth.", "Oil and Economy Cloud Stocks' Outlook  NEW YORK (Reuters) - Soaring crude prices plus worries  about the economy and the outlook for earnings are expected to  hang over the stock market next week during the depth of the  summer doldrums.", 'Safety Net (Forbes.com) Forbes.com - After earning a PH.D. in Sociology, Danny Bazil Riley started to work as the general manager at a commercial real estate firm at an annual base salary of  #36;70,000. Soon after, a financial planner stopped by his desk to drop off brochures about insurance benefits available through his employer. But, at 32, "buying insurance was the furthest thing from my mind," says Riley.')
+batch index: 1,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Fed minutes show dissent over inflation (USATODAY.com) USATODAY.com - Retail sales bounced back a bit in July, and new claims for jobless benefits fell last week, the government said Thursday, indicating the economy is improving from a midsummer slump.', 'Stocks End Up, But Near Year Lows (Reuters) Reuters - Stocks ended slightly higher on Friday\\but stayed near lows for the year as oil prices surged past  #36;46\\a barrel, offsetting a positive outlook from computer maker\\Dell Inc. (DELL.O)', 'US trade deficit swells in June The US trade deficit has exploded 19 to a record \\$55.8bn as oil costs drove imports higher, according to a latest figures.', 'Eurozone economy keeps growing Official figures show the 12-nation eurozone economy continues to grow, but there are warnings it may slow down later in the year.')
+batch index: 2,
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Iraq Halts Oil Exports from Main Southern Pipeline (Reuters) Reuters - Authorities have halted oil export\\flows from the main pipeline in southern Iraq after\\intelligence showed a rebel militia could strike\\infrastructure, an oil official said on Saturday.', 'Oil prices soar to all-time record, posing new menace to US economy (AFP) AFP - Tearaway world oil prices, toppling records and straining wallets, present a new economic menace barely three months before the US presidential elections.', 'Non-OPEC Nations Should Up Output-Purnomo  JAKARTA (Reuters) - Non-OPEC oil exporters should consider  increasing output to cool record crude prices, OPEC President  Purnomo Yusgiantoro said on Sunday.', "No Need for OPEC to Pump More-Iran Gov  TEHRAN (Reuters) - OPEC can do nothing to douse scorching  oil prices when markets are already oversupplied by 2.8 million  barrels per day (bpd) of crude, Iran's OPEC governor said  Saturday, warning that prices could fall sharply.")
+batch index: 3,
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Oil and Economy Cloud Stocks' Outlook (Reuters) Reuters - Soaring crude prices plus worries\\about the economy and the outlook for earnings are expected to\\hang over the stock market next week during the depth of the\\summer doldrums.", 'Expansion slows in Japan Economic growth in Japan slows down as the country experiences a drop in domestic and corporate spending.', "Shell 'could be target for Total' Oil giant Shell could be bracing itself for a takeover attempt, possibly from French rival Total, a  press report claims.", 'Carlyle Looks Toward Commercial Aerospace (Reuters) Reuters - Private investment firm Carlyle Group,\\which has a reputation for making well-timed and occasionally\\controversial plays in the defense industry, has quietly placed\\its bets on another part of the market.')
+batch index: 4,
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Google IPO faces Playboy slip-up The bidding gets underway for Google's public offering, despite last-minute worries over an interview with its bosses in Playboy magazine.", "Dollar Falls Broadly on Record Trade Gap  NEW YORK (Reuters) - The dollar tumbled broadly on Friday  after data showing a record U.S. trade deficit in June cast  fresh doubts on the economy's recovery and its ability to draw  foreign capital to fund the growing gap.", 'Rand falls on shock SA rate cut Interest rates are trimmed to 7.5 by the South African central bank,  but the lack of warning hits the rand and surprises markets.', "Google IPO Auction Off to Rocky Start  WASHINGTON/NEW YORK (Reuters) - The auction for Google  Inc.'s highly anticipated initial public offering got off to a  rocky start on Friday after the Web search company sidestepped  a bullet from U.S. securities regulators.")
+batch index: 5,
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Rescuing an Old Saver If you think you may need to help your elderly relatives with their finances, don't be shy about having the money talk -- soon.", "Money Funds Fell in Latest Week (AP) AP - Assets of the nation's retail money market mutual funds fell by  #36;1.17 billion in the latest week to  #36;849.98 trillion, the Investment Company Institute said Thursday.", "Wall St. Bears Claw Back Into the Black (Reuters) Reuters - Short-sellers, Wall Street's dwindling\\band of ultra-cynics, are seeing green again.", 'Kids Rule for Back-to-School The purchasing power of kids is a big part of why the back-to-school season has become such a huge marketing phenomenon.')
+batch index: 6,
+ label: tensor([2]),
+ batch: ("Wall St. Bears Claw Back Into the Black  NEW YORK (Reuters) - Short-sellers, Wall Street's dwindling  band of ultra-cynics, are seeing green again.",)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Get-the-random-indices-from-RandomSampler">
+<a class="anchor" href="#Get-the-random-indices-from-RandomSampler" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get the random indices from RandomSampler<a class="anchor-link" href="#Get-the-random-indices-from-RandomSampler"> </a>
+</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sometimes, we might want to get the random indices from the DataLoader.</p>
+<p>One way to do this is to let the <code>__getitem__</code> method in Dataset return a triple (index, data, label)</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="k">class</span> <span class="nc">NewsDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">texts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'text'</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'label'</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texts</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">idx</span><span class="p">,</span><span class="n">text</span><span class="p">,</span><span class="n">label</span> <span class="c1"># &lt;--- make the dataset return the index as well</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">news_dataset</span> <span class="o">=</span> <span class="n">NewsDataset</span><span class="p">(</span><span class="n">news_df</span><span class="p">)</span>
+<span class="n">news_dataset</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(8,
+ 'Safety Net (Forbes.com) Forbes.com - After earning a PH.D. in Sociology, Danny Bazil Riley started to work as the general manager at a commercial real estate firm at an annual base salary of  #36;70,000. Soon after, a financial planner stopped by his desk to drop off brochures about insurance benefits available through his employer. But, at 32, "buying insurance was the furthest thing from my mind," says Riley.',
+ 2)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can see in the output that now the <code>news_dataset</code> also returns the index.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="n">random_news_sampler</span> <span class="o">=</span> <span class="n">RandomSampler</span><span class="p">(</span><span class="n">news_dataset</span><span class="p">)</span>
+<span class="c1"># initiate a news DataLoader</span>
+<span class="n">random_news_dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">news_dataset</span><span class="p">,</span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span><span class="n">sampler</span><span class="o">=</span><span class="n">random_news_sampler</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When looping through the batches, use the according triple <code>(index, batch, label)</code> to store what we get form the dataloader.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-python"><pre><span></span><span class="k">for</span> <span class="n">batch_index</span><span class="p">,</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span><span class="n">batch</span><span class="p">,</span><span class="n">label</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">random_news_dataloader</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">'batch index: </span><span class="si">{</span><span class="n">batch_index</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1"> index: </span><span class="si">{</span><span class="n">index</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1"> label: </span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1">,</span><span class="se">\n</span><span class="s1"> batch: </span><span class="si">{</span><span class="n">batch</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>batch index: 0,
+ index: tensor([ 1,  4,  7, 13]),
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Carlyle Looks Toward Commercial Aerospace (Reuters) Reuters - Private investment firm Carlyle Group,\\which has a reputation for making well-timed and occasionally\\controversial plays in the defense industry, has quietly placed\\its bets on another part of the market.', 'Oil prices soar to all-time record, posing new menace to US economy (AFP) AFP - Tearaway world oil prices, toppling records and straining wallets, present a new economic menace barely three months before the US presidential elections.', 'Fed minutes show dissent over inflation (USATODAY.com) USATODAY.com - Retail sales bounced back a bit in July, and new claims for jobless benefits fell last week, the government said Thursday, indicating the economy is improving from a midsummer slump.', "Google IPO Auction Off to Rocky Start  WASHINGTON/NEW YORK (Reuters) - The auction for Google  Inc.'s highly anticipated initial public offering got off to a  rocky start on Friday after the Web search company sidestepped  a bullet from U.S. securities regulators.")
+batch index: 1,
+ index: tensor([20, 11, 21, 17]),
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Google IPO faces Playboy slip-up The bidding gets underway for Google's public offering, despite last-minute worries over an interview with its bosses in Playboy magazine.", "No Need for OPEC to Pump More-Iran Gov  TEHRAN (Reuters) - OPEC can do nothing to douse scorching  oil prices when markets are already oversupplied by 2.8 million  barrels per day (bpd) of crude, Iran's OPEC governor said  Saturday, warning that prices could fall sharply.", 'Eurozone economy keeps growing Official figures show the 12-nation eurozone economy continues to grow, but there are warnings it may slow down later in the year.', "In a Down Market, Head Toward Value Funds There is little cause for celebration in the stock market these days, but investors in value-focused mutual funds have reason to feel a bit smug -- if only because they've lost less than the folks who stuck with growth.")
+batch index: 2,
+ index: tensor([23, 22, 19, 14]),
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Rand falls on shock SA rate cut Interest rates are trimmed to 7.5 by the South African central bank,  but the lack of warning hits the rand and surprises markets.', 'Expansion slows in Japan Economic growth in Japan slows down as the country experiences a drop in domestic and corporate spending.', "Shell 'could be target for Total' Oil giant Shell could be bracing itself for a takeover attempt, possibly from French rival Total, a  press report claims.", "Dollar Falls Broadly on Record Trade Gap  NEW YORK (Reuters) - The dollar tumbled broadly on Friday  after data showing a record U.S. trade deficit in June cast  fresh doubts on the economy's recovery and its ability to draw  foreign capital to fund the growing gap.")
+batch index: 3,
+ index: tensor([ 6, 12,  2,  5]),
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Money Funds Fell in Latest Week (AP) AP - Assets of the nation's retail money market mutual funds fell by  #36;1.17 billion in the latest week to  #36;849.98 trillion, the Investment Company Institute said Thursday.", 'Non-OPEC Nations Should Up Output-Purnomo  JAKARTA (Reuters) - Non-OPEC oil exporters should consider  increasing output to cool record crude prices, OPEC President  Purnomo Yusgiantoro said on Sunday.', "Oil and Economy Cloud Stocks' Outlook (Reuters) Reuters - Soaring crude prices plus worries\\about the economy and the outlook for earnings are expected to\\hang over the stock market next week during the depth of the\\summer doldrums.", 'Stocks End Up, But Near Year Lows (Reuters) Reuters - Stocks ended slightly higher on Friday\\but stayed near lows for the year as oil prices surged past  #36;46\\a barrel, offsetting a positive outlook from computer maker\\Dell Inc. (DELL.O)')
+batch index: 4,
+ index: tensor([ 0, 15, 24,  9]),
+ label: tensor([2, 2, 2, 2]),
+ batch: ("Wall St. Bears Claw Back Into the Black (Reuters) Reuters - Short-sellers, Wall Street's dwindling\\band of ultra-cynics, are seeing green again.", "Rescuing an Old Saver If you think you may need to help your elderly relatives with their finances, don't be shy about having the money talk -- soon.", 'Car prices down across the board The cost of buying both new and second hand cars fell sharply over the past five years, a new survey has found.', "Wall St. Bears Claw Back Into the Black  NEW YORK (Reuters) - Short-sellers, Wall Street's dwindling  band of ultra-cynics, are seeing green again.")
+batch index: 5,
+ index: tensor([ 8,  3, 18, 16]),
+ label: tensor([2, 2, 2, 2]),
+ batch: ('Safety Net (Forbes.com) Forbes.com - After earning a PH.D. in Sociology, Danny Bazil Riley started to work as the general manager at a commercial real estate firm at an annual base salary of  #36;70,000. Soon after, a financial planner stopped by his desk to drop off brochures about insurance benefits available through his employer. But, at 32, "buying insurance was the furthest thing from my mind," says Riley.', 'Iraq Halts Oil Exports from Main Southern Pipeline (Reuters) Reuters - Authorities have halted oil export\\flows from the main pipeline in southern Iraq after\\intelligence showed a rebel militia could strike\\infrastructure, an oil official said on Saturday.', 'US trade deficit swells in June The US trade deficit has exploded 19 to a record \\$55.8bn as oil costs drove imports higher, according to a latest figures.', 'Kids Rule for Back-to-School The purchasing power of kids is a big part of why the back-to-school season has become such a huge marketing phenomenon.')
+batch index: 6,
+ index: tensor([10]),
+ label: tensor([2]),
+ batch: ("Oil and Economy Cloud Stocks' Outlook  NEW YORK (Reuters) - Soaring crude prices plus worries  about the economy and the outlook for earnings are expected to  hang over the stock market next week during the depth of the  summer doldrums.",)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p><strong>Reference</strong></p>
+<ul>
+<li><a href="https://pytorch.org/tutorials/beginner/basics/data_tutorial.html">Dataset and DataLoader begginer tutorial</a></li>
+<li><a href="https://pytorch.org/docs/stable/data.html#loading-batched-and-non-batched-data">DataLoader</a></li>
+<li><a href="https://pytorch.org/cppdocs/api/classtorch_1_1data_1_1samplers_1_1_sequential_sampler.html">SequentialSampler</a></li>
+<li><a href="https://pytorch.org/cppdocs/api/classtorch_1_1data_1_1samplers_1_1_random_sampler.html">RandomSampler</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<script type="application/vnd.jupyter.widget-state+json">
+{"25b24c5969424815905615d2c3ee365d": {"model_module": "@jupyter-widgets/controls", "model_name": "HBoxModel", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HBoxModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HBoxView", "box_style": "", "children": ["IPY_MODEL_26fc8db698f1415bae413472618980a7", "IPY_MODEL_c2e4347baad84fb6b36f8cfa633b4a9a", "IPY_MODEL_640efa45895e40d0bac6f7b520c6a695"], "layout": "IPY_MODEL_96c87013e04845fa947f54dcac915605"}}, "26fc8db698f1415bae413472618980a7": {"model_module": "@jupyter-widgets/controls", "model_name": "HTMLModel", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_29c1fa474b4f421689cc6b10aee1e090", "placeholder": "\u200b", "style": "IPY_MODEL_8120fb716ffb43f9b34578a2861d077c", "value": "100%"}}, "c2e4347baad84fb6b36f8cfa633b4a9a": {"model_module": "@jupyter-widgets/controls", "model_name": "FloatProgressModel", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "FloatProgressModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "ProgressView", "bar_style": "success", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_21f0ff5e774c4cc18ef4928c058e24b8", "max": 2, "min": 0, "orientation": "horizontal", "style": "IPY_MODEL_2c7d6d638f8b4a82a5492bd78d3204d7", "value": 2}}, "640efa45895e40d0bac6f7b520c6a695": {"model_module": "@jupyter-widgets/controls", "model_name": "HTMLModel", "model_module_version": "1.5.0", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "1.5.0", "_view_name": "HTMLView", "description": "", "description_tooltip": null, "layout": "IPY_MODEL_9bed49a5b53a45869c3dd6c583a44c0e", "placeholder": "\u200b", "style": "IPY_MODEL_07ae9bc9de1a4d56ad0b3c81463983c1", "value": " 2/2 [00:00&lt;00:00, 34.22it/s]"}}, "96c87013e04845fa947f54dcac915605": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "29c1fa474b4f421689cc6b10aee1e090": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "8120fb716ffb43f9b34578a2861d077c": {"model_module": "@jupyter-widgets/controls", "model_name": "DescriptionStyleModel", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}, "21f0ff5e774c4cc18ef4928c058e24b8": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "2c7d6d638f8b4a82a5492bd78d3204d7": {"model_module": "@jupyter-widgets/controls", "model_name": "ProgressStyleModel", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "ProgressStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "bar_color": null, "description_width": ""}}, "9bed49a5b53a45869c3dd6c583a44c0e": {"model_module": "@jupyter-widgets/base", "model_name": "LayoutModel", "model_module_version": "1.2.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "1.2.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "overflow_x": null, "overflow_y": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "07ae9bc9de1a4d56ad0b3c81463983c1": {"model_module": "@jupyter-widgets/controls", "model_name": "DescriptionStyleModel", "model_module_version": "1.5.0", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "1.5.0", "_model_name": "DescriptionStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "1.2.0", "_view_name": "StyleView", "description_width": ""}}}
+</script>
+
+
+
+  </div><a class="u-url" href="/how-to-use-pytorch-dataloader/" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>a learning progress in deep learning, python, and research.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/intodeeplearning" target="_blank" title="intodeeplearning"><svg class="svg-icon grey"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
