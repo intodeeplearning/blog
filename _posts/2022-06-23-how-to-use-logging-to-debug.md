@@ -502,6 +502,20 @@ INFO:root:Finished
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Reference">Reference<a class="anchor-link" href="#Reference"> </a></h2><ul>
 <li><a href="https://docs.python.org/3/library/logging.html#module-logging">logging official doc</a></li>
 <li><a href="https://docs.python.org/3/howto/logging.html#logging-basic-tutorial">official logging howto</a></li>
