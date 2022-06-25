@@ -1,6 +1,6 @@
 ---
 keywords: fastai
-title: How to save the best model during model training and load it for inference
+title: How to save the best model during model training and load it for inference in pytorch
 toc: true
 badges: true
 categories: [Model Training]
