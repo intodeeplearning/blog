@@ -810,7 +810,7 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Optimizer-and-Scheduler"><strong>Optimizer and Scheduler</strong><a class="anchor-link" href="#Optimizer-and-Scheduler"> </a></h3>
+<h3 id="Optimizer-and-Scheduler">Optimizer and Scheduler<a class="anchor-link" href="#Optimizer-and-Scheduler"> </a></h3>
 </div>
 </div>
 </div>
