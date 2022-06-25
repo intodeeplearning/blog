@@ -1,6 +1,6 @@
 ---
 keywords: fastai
-title: How to save the best model during model training and load it for inference?
+title: How to save the best model during model training and load it for inference
 toc: true
 badges: true
 categories: [Model Training]
@@ -1624,7 +1624,9 @@ weighted avg       0.80      0.79      0.79       420
     </div>
 </div>
 </div>
-
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Output" data-close="Show Output"></summary>
+        <p>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1642,7 +1644,8 @@ You should probably TRAIN this model on a down-stream task to be able to use it 
 
 </div>
 </div>
-
+</p>
+    </details>
 </div>
     {% endraw %}
 
